@@ -21,6 +21,7 @@ This directory contains two methods for generating a professional PDF from the O
 - XeLaTeX (part of MacTeX): `brew install --cask mactex-no-gui`
 - Pandoc: `brew install pandoc`
 - MiKTeX configured for automatic package installation
+- **Adobe Clean font files** in `latex/fonts/` directory (not included in repo due to licensing)
 
 ### Usage
 ```bash
@@ -142,9 +143,27 @@ mpm --install=<package-name>
 
 ### Font Not Found
 
-Ensure fonts are in the `fonts/` directory relative to `template.tex`:
-```bash
-ls latex/fonts/AdobeClean*.ttf
+**Note:** Adobe font files are not included in this repository due to licensing restrictions.
+
+To use Adobe Clean font, you need to:
+1. Obtain Adobe Clean font files (Regular, Bold, Italic, BoldItalic)
+2. Place them in `latex/fonts/` directory:
+   ```bash
+   latex/fonts/
+   ├── AdobeClean-Regular.ttf
+   ├── AdobeClean-Bold.ttf
+   ├── AdobeClean-It.ttf
+   └── AdobeClean-BoldIt.ttf
+   ```
+3. Verify they exist:
+   ```bash
+   ls latex/fonts/AdobeClean*.ttf
+   ```
+
+**Alternative:** Use a different font by modifying `template.tex`:
+```latex
+% Replace Adobe Clean with a system font
+\setmainfont{Helvetica Neue}  % or Arial, etc.
 ```
 
 ### Emoji/Symbol Warnings
