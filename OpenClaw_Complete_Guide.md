@@ -675,5 +675,5 @@ openclaw --version
 This guide stands on the shoulders of Bill's excellent original work. The core setup methodology (sections 1-8) is his creation; the additional security framework builds upon his foundation.
 
 ---
-
+ 
 *Last updated: February 1, 2026*
