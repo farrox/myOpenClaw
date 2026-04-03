@@ -8,6 +8,7 @@
 
 ### Security hardening (exec + filesystem)
 
+- **Replicating on another Mac / for another person:** follow **`LLM_ASSISTANT_SETUP_GUIDE.md`** in this repo (written for LLM-assisted setup).
 - `~/.openclaw` and `~/.openclaw/credentials` are **`chmod 700`** (owner-only).
 - **`~/.openclaw/exec-approvals.json`**: gateway exec defaults **`security: allowlist`**, **`ask: on-miss`**, **`askFallback: deny`**, **`autoAllowSkills: false`**; **`main`** allowlists **`~/.local/bin/pass-cli`** only (plus OpenClaw “safe bins” like `jq`/`grep`/`tail` without extra approval).
 - **`openclaw.json`** → **`tools.exec`**: **`host: gateway`**, **`security: allowlist`**, **`ask: on-miss`** (aligned with approvals).

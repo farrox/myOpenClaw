@@ -1,9 +1,8 @@
-# 🦞 OpenClaw is LIVE!
+# 🦞 OpenClaw — How to Use
 
-**Gateway Status:** ✅ Running on ws://127.0.0.1:18789  
-**Model:** Claude Opus 4.5  
-**Workspace:** ~/clawd/  
-**Email:** shahos.oc@gmail.com
+> **Per-machine:** Replace the values below with *this* Mac’s gateway port, model, workspace path, and assistant Gmail (see `~/.openclaw/openclaw.json` and your gateway terminal output).
+
+**Example (one household install):** Gateway `ws://127.0.0.1:18789` · Model `anthropic/claude-opus-4-5` · Workspace `~/clawd/` · Assistant Gmail configured in `TOOLS.md`
 
 ---
 
@@ -37,23 +36,23 @@ openclaw agent --message "What's on my calendar today?"
 
 ## 🧪 TEST COMMANDS
 
-Try these to verify everything works:
+Try these to verify everything works (expectations should match **your** `TOOLS.md` / `SCHEDULING.md`):
 
 ```
 1. "What's my email address?"
-   Expected: shahos.oc@gmail.com
+   Expected: The assistant Gmail you configured (see TOOLS.md).
 
 2. "Who are my trusted senders?"
-   Expected: edshahos@pm.me
+   Expected: The allowlisted personal/work emails from TOOLS.md.
 
-3. "Show me what's in my Proton Pass vault"
-   Expected: Should list "OpenClaw Gmail" and "Anthropic API Key"
+3. "What password manager / vault do you use?"
+   Expected: Matches your setup (e.g. Proton Pass vault name from TOOLS.md).
 
 4. "What's on my calendar today?"
-   Expected: Shows your calendar events
+   Expected: Real events once calendar CLI (e.g. gcalcli) is authenticated.
 
 5. "What are my security rules?"
-   Expected: References SECURITY.md (ACIP)
+   Expected: References SECURITY.md (ACIP) at a high level, without leaking secrets.
 ```
 
 ### Test ACIP Security
@@ -70,8 +69,11 @@ Expected: OpenClaw should **refuse** and recognize this as a prompt injection at
 
 ### View Gateway Logs (Real-time)
 
+Gateway stdout shows the log path on startup (typically under `/tmp/openclaw/`). Example:
+
 ```bash
-tail -f /tmp/openclaw/openclaw-2026-03-31.log
+ls /tmp/openclaw/
+tail -f /tmp/openclaw/openclaw-$(date +%Y-%m-%d).log
 ```
 
 ### Check Activity Log
@@ -106,7 +108,7 @@ openclaw gateway stop
 
 ## 🎊 YOU'RE READY!
 
-**Gateway is running in the background.**
+**Keep a terminal tab running** `openclaw gateway` (or run it as a service if you configure that later).
 
 **To start chatting, run:**
 
@@ -122,6 +124,4 @@ openclaw tui
 
 ---
 
-*Gateway started: March 31, 2026*  
-*All security measures active*  
-*Ready for testing phase*
+*For a full install checklist (including another LLM helping a family member), see **`LLM_ASSISTANT_SETUP_GUIDE.md`** in this repo.*

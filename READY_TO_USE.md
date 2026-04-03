@@ -1,5 +1,7 @@
 # 🎉 OpenClaw Setup Complete - Ready to Use!
 
+> **Household snapshot:** This file describes **one** completed install. For **another person** or **another Mac**, use **`LLM_ASSISTANT_SETUP_GUIDE.md`** (for an LLM helper) or **`SETUP_GUIDE.md`** (human walkthrough).
+
 **Date:** March 30, 2026  
 **Email:** shahos.oc@gmail.com  
 **Trusted User:** edshahos@pm.me  

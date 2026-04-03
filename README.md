@@ -5,7 +5,7 @@ A comprehensive security guide for deploying OpenClaw as your virtual executive 
 **Adapted by:** Ed Shah  
 **Original Author:** Bill D'Alessandro ([@BillDA](https://twitter.com/BillDA))  
 **Version:** 2026.2.1  
-**Last Updated:** February 1, 2026
+**Last Updated:** April 2, 2026
 
 ---
 
@@ -32,9 +32,22 @@ The complete guide is in this directory: **[Complete Security Guide](OpenClaw_Co
 # Install OpenClaw globally
 npm install -g openclaw
 
-# Verify installation
-openclaw --version
+# Verify installation (use `command openclaw` if your shell wraps `openclaw`)
+command openclaw --version
 ```
+
+### Documentation in this repo
+
+| Document | Who it’s for |
+|----------|----------------|
+| **[LLM_ASSISTANT_SETUP_GUIDE.md](LLM_ASSISTANT_SETUP_GUIDE.md)** | **Another LLM** installing OpenClaw for a family member (checklist, `auth-profiles` format, exec hardening, pitfalls). |
+| [SETUP_GUIDE.md](SETUP_GUIDE.md) | Long human walkthrough (includes April 2026 addendum + legacy 1Password sections). |
+| [OpenClaw_Complete_Guide.md](OpenClaw_Complete_Guide.md) | Full security methodology (markdown “source”). |
+| [PROTON_PASS_SETUP.md](PROTON_PASS_SETUP.md) / [QUICK_START_PROTON.md](QUICK_START_PROTON.md) | Proton Pass CLI for credentials. |
+| [HOW_TO_USE.md](HOW_TO_USE.md) / [SUCCESS.md](SUCCESS.md) | Day‑2 operations (customize paths per machine). |
+| [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | CLI/gateway hangs and diagnostics. |
+
+Operational files (not in git) typically live under **`~/.openclaw/`** and **`~/clawd/`** on each Mac.
 
 ---
 
@@ -78,22 +91,22 @@ openclaw --version
 ## 📂 Repository Structure
 
 ```
-moltstuff/
-├── README.md                           # This file - project overview
-├── OpenClaw_Complete_Guide.md          # Complete security guide (source)
-├── PROJECT_README.md                   # Additional project documentation
-├── fix-dev-permissions.sh              # Fix npm permissions for multiple users
-│
-└── latex/                              # PDF generation & documentation
-    ├── OpenClaw_Security_Guide.pdf     # ⭐ Main deliverable (420 KB, 9 pages)
-    ├── OpenClaw_Security_Guide.html    # HTML source for PDF
-    ├── generate_pdf.sh                 # Regenerate PDF from markdown
-    ├── README_LATEX.md                 # PDF generation documentation
-    ├── MIKTEX_SETUP.md                 # LaTeX configuration guide
-    ├── COMPLETION_SUMMARY.md           # Project completion details
-    ├── configure_miktex.sh             # MiKTeX auto-install setup
-    └── fonts/                          # 52 professional fonts for LaTeX
+myOpenClaw/
+├── README.md                          # This file
+├── OpenClaw_Complete_Guide.md         # Full security guide (markdown)
+├── LLM_ASSISTANT_SETUP_GUIDE.md       # Instructions for LLMs doing a household install
+├── SETUP_GUIDE.md                     # Step-by-step setup (+ April 2026 addendum)
+├── PROTON_PASS_SETUP.md               # Proton Pass CLI
+├── HOW_TO_USE.md / SUCCESS.md         # Operator notes (customize per machine)
+├── TROUBLESHOOTING.md
+├── fix-dev-permissions.sh             # Optional: npm permissions (multi-user Macs)
+└── latex/                             # PDF generation (XeLaTeX / Pandoc)
+    ├── template.tex
+    ├── generate_pdf_xelatex.sh
+    └── README_PDF_GENERATION.md
 ```
+
+**On each Mac:** `~/.openclaw/` (OpenClaw state, **never commit**), `~/clawd/` (agent workspace: `TOOLS.md`, `SECURITY.md`, etc.).
 
 ---
 
@@ -142,12 +155,11 @@ cd latex && ./configure_miktex.sh
 - No more hanging during LaTeX compilation
 
 ### 4. Documentation Suite
-- **README.md** - This file (project overview)
-- **OpenClaw_Complete_Guide.md** - Full security guide
-- **PROJECT_README.md** - Detailed project documentation
-- **latex/README_LATEX.md** - PDF generation details
-- **latex/MIKTEX_SETUP.md** - LaTeX configuration guide
-- **latex/COMPLETION_SUMMARY.md** - Session summary
+- **README.md** — Project overview (this file)
+- **LLM_ASSISTANT_SETUP_GUIDE.md** — For LLMs assisting another person’s install
+- **OpenClaw_Complete_Guide.md** — Full security guide
+- **SETUP_GUIDE.md** — Step-by-step setup
+- **latex/README_PDF_GENERATION.md** — PDF / XeLaTeX generation
 
 ---
 
@@ -451,12 +463,8 @@ See [`latex/MIKTEX_SETUP.md`](latex/MIKTEX_SETUP.md) for:
 - Common errors
 - Manual package installation
 
-### For Project Overview
-See [`PROJECT_README.md`](PROJECT_README.md) for:
-- Detailed project documentation
-- Development notes
-- Contributing guidelines
-- Usage scenarios
+### For LLM-assisted setup
+See [`LLM_ASSISTANT_SETUP_GUIDE.md`](LLM_ASSISTANT_SETUP_GUIDE.md).
 
 ### For Completion Details
 See [`latex/COMPLETION_SUMMARY.md`](latex/COMPLETION_SUMMARY.md) for:
@@ -541,6 +549,6 @@ This project was completed in a single session on February 1, 2026, including:
 
 *For questions, improvements, or contributions, update this repository and regenerate the PDF.*
 
-**Last Updated:** February 1, 2026  
-**Project Status:** Complete  
-**Ready to Deploy:** Yes
+**Last Updated:** April 2, 2026  
+**Project Status:** Maintained (docs + LaTeX tooling)  
+**Ready to Deploy:** Yes — follow `SETUP_GUIDE.md` or `LLM_ASSISTANT_SETUP_GUIDE.md` per machine

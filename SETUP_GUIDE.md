@@ -6,6 +6,22 @@
 
 ---
 
+## April 2026 addendum (read this first)
+
+This guide’s **original flow** centers on **1Password** and paths under `~/`. The **current household setup** uses:
+
+| Topic | What we use |
+|--------|-------------|
+| **Agent workspace** | `~/clawd/` for `TOOLS.md`, `SCHEDULING.md`, `SECURITY.md`, `MEMORY.md` — not the home directory root |
+| **Credentials** | **Proton Pass CLI** (`pass-cli`); see **`PROTON_PASS_SETUP.md`** and **`QUICK_START_PROTON.md`** |
+| **Anthropic API key** | Must use OpenClaw’s **`auth-profiles.json`** format (`version` + `profiles` + `anthropic:default`); see **`LLM_ASSISTANT_SETUP_GUIDE.md`** §4 |
+| **Exec safety** | `~/.openclaw/exec-approvals.json` + `tools.exec` in `openclaw.json`; **`chmod 700`** on `~/.openclaw` and `~/.openclaw/credentials` |
+| **Verification** | `openclaw security audit` and `openclaw approvals get` |
+
+**If another LLM is doing a fresh install for someone else**, start from **`LLM_ASSISTANT_SETUP_GUIDE.md`** (checklist + anti-footgun rules), then dip into the phases below for detail.
+
+---
+
 ## Phase 1: Install Security Prerequisites
 
 ### Step 1.1: Fix Homebrew Permissions (if needed)
