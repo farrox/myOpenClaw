@@ -6,6 +6,15 @@
 **Model:** Claude Opus 4.5  
 **API Key:** ✅ Authenticated  
 
+### Security hardening (exec + filesystem)
+
+- `~/.openclaw` and `~/.openclaw/credentials` are **`chmod 700`** (owner-only).
+- **`~/.openclaw/exec-approvals.json`**: gateway exec defaults **`security: allowlist`**, **`ask: on-miss`**, **`askFallback: deny`**, **`autoAllowSkills: false`**; **`main`** allowlists **`~/.local/bin/pass-cli`** only (plus OpenClaw “safe bins” like `jq`/`grep`/`tail` without extra approval).
+- **`openclaw.json`** → **`tools.exec`**: **`host: gateway`**, **`security: allowlist`**, **`ask: on-miss`** (aligned with approvals).
+- **`openclaw security audit`**: only remaining note is **trusted proxies** if you ever put the Control UI behind a reverse proxy; **loopback-only** is fine as-is.
+
+**Restart the gateway** after these changes so it reloads config: stop with `Ctrl+C`, then `openclaw gateway`.
+
 ---
 
 ## What Just Worked
