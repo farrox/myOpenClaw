@@ -16,7 +16,7 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 | Agent workspace | `~/clawd` | **Not created yet** (see below). |
 | Repo clone | `~/Developer/myOpenClaw` | This file lives here. |
 | Secrets | Proton Pass (`pass-cli`) | Install + PATH TBD. |
-| Remote access | SSH + RDP (xrdp/XFCE) | See [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md). |
+| Remote access | SSH + RDP (xrdp + Cinnamon) | See [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md). |
 | GPU | NVIDIA 470 / Kepler | Driver notes in workstation doc. |
 
 ---
@@ -33,7 +33,7 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 | `sudo -u ed bash -lc 'command -v node && node -v; …'` | **OK** (`-l` = login → **`.profile`** runs). |
 | `~/clawd` | **Missing** |
 | `~/.openclaw` | **Missing** |
-| `openclaw` | **Not on `PATH`** yet |
+| `openclaw` | **OpenClaw 2026.4.2** (`d74a122`) under nvm’s global bin after **`nvm.sh`** is sourced; **`command openclaw --version`** OK in that environment. Interactive SSH without loading nvm still shows **`npm`/`openclaw` not found** until **`~/.bashrc`** loads nvm (see changelog). |
 | `pass-cli` | **Not on `PATH`** yet |
 | `gcalcli` | **`/usr/bin/gcalcli`** present |
 
@@ -44,7 +44,7 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 ## Progress checklist (OpenClaw)
 
 - [x] Node.js LTS + npm; global bin on `PATH` for **login** shells (`bash -l`, SSH login, **`bash -lc`**). **Re-check** RDP/XFCE session `PATH` when you run the gateway from the GUI (may need desktop env or **`~/.xsessionrc`** if `node` is missing there).
-- [ ] `npm install -g openclaw`; `command openclaw --version` works (no shell wrapper deadlock).
+- [x] `npm install -g openclaw`; `command openclaw --version` works (no shell wrapper deadlock). **482 packages** in ~1m; npm suggested upgrading itself to 11.x (optional).
 - [ ] `mkdir -p ~/clawd/memory`; `SECURITY.md`, `TOOLS.md`, `SCHEDULING.md` in `~/clawd` (from repo templates / ACIP).
 - [ ] `~/.openclaw/openclaw.json` → `agents.defaults.workspace` = `/home/ed/clawd` (or equivalent).
 - [ ] Anthropic `auth-profiles.json` correct shape; `chmod 600`.
@@ -57,6 +57,11 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 ---
 
 ## Changelog / steps log
+
+### 2026-04-05 (OpenClaw CLI)
+
+- **`npm install -g openclaw`** after sourcing nvm in-session: **`OpenClaw 2026.4.2 (d74a122)`** from **`command openclaw --version`**. (Harmless **`node-domexception`** deprecation warning during install.)
+- **Still do:** ensure **`~/.bashrc`** ends with **`NVM_DIR` + `nvm.sh`** so new SSH shells get **`npm`/`openclaw`** without manual **`source`**.
 
 ### 2026-04-05
 
@@ -81,4 +86,4 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 ---
 
-*Next update: after Node/OpenClaw install or first `openclaw gateway` run — paste command outputs into the changelog (redact secrets).*
+*Next update: after `~/clawd` + `openclaw onboard` / first `openclaw gateway` run — paste command outputs into the changelog (redact secrets).*
