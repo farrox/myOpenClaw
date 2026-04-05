@@ -47,6 +47,7 @@ command openclaw --version
 | [HOW_TO_USE.md](HOW_TO_USE.md) / [SUCCESS.md](SUCCESS.md) | Day‑2 operations (customize paths per machine). |
 | [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md) | Ubuntu desktop + SSH + RDP + NVIDIA 470 + GitHub SSH patterns (`mypc`). |
 | [ubuntu_status.md](ubuntu_status.md) | **Living log** for OpenClaw setup on Ubuntu (`mypc`): verified state, assumptions, steps taken. |
+| [SELLER_AGENT_LLM_GUIDE.md](SELLER_AGENT_LLM_GUIDE.md) | **Seller agent** playbook: `/home/ed/Transfer` folders, pricing, drafts for FB/CL/eBay/OfferUp, human publishes. |
 | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | CLI/gateway hangs and diagnostics. |
 
 Operational files (not in git) typically live under **`~/.openclaw/`** and **`~/clawd/`** on each machine (Mac or Ubuntu).
