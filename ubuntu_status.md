@@ -58,6 +58,8 @@ Commands: `sudo -u ed bash -lc '…'` (non-login, non-interactive).
 ### 2026-04-05
 
 - **Added** this file (`ubuntu_status.md`).
+- **README.md:** linked this doc in the documentation table.
+- **Git:** committed on `main` and **pushed** to `origin` (`github.com:farrox/myOpenClaw.git`).
 - **Assumption:** Cursor workspace is the same machine as `mypc`; if not, re-run verification there and replace the “Verified” section.
 - **Assumption:** OpenClaw install has **not** started on mypc until Node + global npm are confirmed for the intended shell profile.
 
