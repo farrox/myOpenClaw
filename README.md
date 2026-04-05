@@ -46,9 +46,10 @@ command openclaw --version
 | [PROTON_PASS_SETUP.md](PROTON_PASS_SETUP.md) / [QUICK_START_PROTON.md](QUICK_START_PROTON.md) | Proton Pass CLI for credentials. |
 | [HOW_TO_USE.md](HOW_TO_USE.md) / [SUCCESS.md](SUCCESS.md) | Day‑2 operations (customize paths per machine). |
 | [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md) | Ubuntu desktop + SSH + RDP + NVIDIA 470 + GitHub SSH patterns (`mypc`). |
+| [ubuntu_status.md](ubuntu_status.md) | **Living log** for OpenClaw setup on Ubuntu (`mypc`): verified state, assumptions, steps taken. |
 | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | CLI/gateway hangs and diagnostics. |
 
-Operational files (not in git) typically live under **`~/.openclaw/`** and **`~/clawd/`** on each Mac.
+Operational files (not in git) typically live under **`~/.openclaw/`** and **`~/clawd/`** on each machine (Mac or Ubuntu).
 
 ---
 
