@@ -1,6 +1,54 @@
 # Ubuntu workstation notes (`mypc`)
 
-Household Ubuntu desktop + SSH + RDP patterns that worked on **22.04 Jammy** (and to re-verify after **24.04** upgrade).
+Household Ubuntu desktop + SSH + RDP patterns that worked on **22.04 Jammy** (and to re-verify after **24.04 Noble** upgrade).
+
+**Source of truth for this machine:** this file in the **`myOpenClaw`** repo: **`UBUNTU_WORKSTATION_NOTES.md`** (repo root). After `git clone`, it is **`…/myOpenClaw/UBUNTU_WORKSTATION_NOTES.md`** (e.g. **`~/Developer/myOpenClaw/UBUNTU_WORKSTATION_NOTES.md`** on **`ed@mypc`**). Prefer it over ad-hoc shell snippets when aligning OpenClaw, SSH, RDP, and firewall steps.
+
+**Primary Linux user for OpenClaw / SSH:** **`ed`** (home **`/home/ed`**).
+
+---
+
+## OpenClaw-related paths and tooling (user `ed`)
+
+These are **expected to be missing** until setup is finished:
+
+| Path / check | Meaning |
+|--------------|---------|
+| **`/home/ed/clawd`** | Agent workspace (create per **`LLM_ASSISTANT_SETUP_GUIDE.md`** / **`SETUP_GUIDE.md`**). |
+| **`~/.openclaw/`** | OpenClaw config + state (created by **`openclaw onboard`** / first run). |
+| **`openclaw` on `PATH`** | Installed with **`npm install -g openclaw`** after Node is available. |
+
+**Proton Pass CLI (`pass-cli`):** install and login per **`PROTON_PASS_SETUP.md`** and **`QUICK_START_PROTON.md`** in this repo. The binary often ends up under **`~/.local/bin/pass-cli`**; **`which pass-cli`** must succeed in the **same** environment that runs the gateway (terminal, systemd user unit, or login session).
+
+---
+
+## Shell and `PATH` (non-interactive vs login)
+
+Remote assistants sometimes run **`bash -lc '…'`** (non-login, non-interactive). On a typical **nvm** + **Debian/Ubuntu** setup, **Node**, **npm**, **globally installed CLIs** (e.g. **`openclaw`**), and sometimes **`pass-cli`** are only appended to **`PATH`** from **`~/.bashrc`** or after **`nvm.sh`** is sourced—so they **will not appear** in a bare **`bash -lc`** check.
+
+**Do this instead when verifying tools:**
+
+1. **Interactive SSH (recommended):** `ssh -t ed@mypc.home` then run `which node`, `which npm`, `which openclaw`, `which pass-cli`, `node -v`.
+2. **Login shell one-liner:** `ssh ed@mypc.home 'bash -l -c "command -v node; command -v openclaw; command -v pass-cli"'` (note **`-l`**).
+3. If you must use a non-login shell, source nvm explicitly, e.g.  
+   `source "$HOME/.nvm/nvm.sh" && command -v node && command -v openclaw`
+
+**Goal:** match how **`ed`** actually starts the gateway (interactive terminal, tmux, or desktop shortcut)—that environment’s **`PATH`** is what matters.
+
+**Node install method on this class of machine:** **[nvm](https://github.com/nvm-sh/nvm)** + **Node 22** (or current LTS), then **`npm install -g openclaw`**. Do **not** use **`sudo npm install -g`** with nvm’s Node. Ensure login shells load nvm (installer usually adds lines to **`~/.bashrc`**); for **GUI-launched** apps that need `node`/`openclaw` on `PATH`, you may also need **`~/.profile`** or your desktop environment’s session **`PATH`**—see **`LLM_ASSISTANT_SETUP_GUIDE.md`** §1 and related notes.
+
+---
+
+## Firewall (`ufw`) — optional
+
+If **`ufw`** is enabled, typical home LAN pattern:
+
+- **`sudo ufw allow OpenSSH`** (or **`sudo ufw allow 22/tcp`**) before enabling, so SSH is not locked out.
+- **`sudo ufw enable`** / **`sudo ufw status`** to confirm.
+
+Adjust for **Tailscale**, **WireGuard**, or **non-default SSH ports** as needed.
+
+---
 
 ## After a release upgrade (22.04 → 24.04)
 
@@ -9,7 +57,9 @@ Household Ubuntu desktop + SSH + RDP patterns that worked on **22.04 Jammy** (an
 3. **NVIDIA (GTX 780 / Kepler):** only **470** series is appropriate; prefer **`nvidia-driver-470`** (uses **DKMS**) if prebuilt `linux-modules-nvidia-470-*` meta packages hit **signature / version skew** errors.
 4. **Verify GPU:** `nvidia-smi`
 5. **DKMS:** after a **new kernel**, if the module is missing: `sudo dkms status` and reinstall/rebuild as needed.
-6. **xrdp + XFCE:** ensure `/etc/xrdp/startwm.sh` ends with **`exec startxfce4`** (and `unset DBUS_SESSION_BUS_ADDRESS` / `XDG_RUNTIME_DIR` if needed) to avoid black-screen disconnects.
+6. **xrdp + desktop session:** ensure `/etc/xrdp/startwm.sh` launches a real session. Common choices:
+   - **XFCE:** end with **`exec startxfce4`** (and `unset DBUS_SESSION_BUS_ADDRESS` / `XDG_RUNTIME_DIR` if needed) to avoid black-screen disconnects.
+   - **Cinnamon (used on `mypc` in some setups):** e.g. **`exec cinnamon-session-cinnamon`**; keep local changes when **`dpkg`** asks to overwrite **`startwm.sh`** (**`N`**). Mirror **`~/.xsession`** for the RDP user if needed.
 7. **Polkit / colord popup** over RDP: optional rule under `/etc/polkit-1/rules.d/` for `org.freedesktop.color-manager` (see conversation / polkit docs).
 
 ## Git + GitHub (SSH)
@@ -58,4 +108,4 @@ Add **`ufw`**, **`htop`**, **`tmux`**, **`ca-certificates`**, **`software-proper
 
 ---
 
-*Last updated: April 2026 — re-validate commands on your Ubuntu version after `do-release-upgrade`.*
+*Last updated: April 2, 2026 — re-validate commands on your Ubuntu version after `do-release-upgrade`.*
