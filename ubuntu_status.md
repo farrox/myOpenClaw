@@ -61,7 +61,8 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 ### 2026-04-05 (onboard)
 
 - **`openclaw onboard --non-interactive --accept-risk`** with **`--workspace /home/ed/clawd`**, **`--auth-choice skip`**, **`--mode local`**: updated **`~/.openclaw/openclaw.json`**; **Workspace OK: ~/clawd**; **Sessions OK: ~/.openclaw/agents/main/sessions**.
-- **Next:** Anthropic **`auth-profiles.json`** + **`chmod 600`**, **`chmod 700 ~/.openclaw`**, then **`openclaw doctor`** / **`openclaw gateway`**.
+- **Gateway probe:** if the CLI warns **Gateway did not become reachable** at **`ws://127.0.0.1:18789`**, that only means nothing was listening during onboard—**not** a failed workspace step. Fix: **`openclaw gateway run`** (or **`openclaw gateway install`** + **`start`**), re-onboard with **`--install-daemon`**, or use **`--skip-health`** next time.
+- **Next:** Anthropic **`auth-profiles.json`** + **`chmod 600`**, **`chmod 700 ~/.openclaw`**, then **`openclaw doctor`** / **`openclaw gateway run`**.
 
 ### 2026-04-05 (OpenClaw CLI)
 
