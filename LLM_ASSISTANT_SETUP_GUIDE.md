@@ -81,6 +81,8 @@ mkdir -p "/Users/MAC_USER/clawd/memory"
 - Create **`TOOLS.md`** and **`SCHEDULING.md`** in `WORKSPACE` using this repo’s templates, with **their** emails and vault name.
 - Point OpenClaw’s default agent workspace at `WORKSPACE` (via `openclaw setup` / `openclaw onboard` / `openclaw configure`, or by editing `~/.openclaw/openclaw.json` → `agents.defaults.workspace`).
 
+**OpenClaw ≥ 2026.4.x (non-interactive):** `openclaw setup --non-interactive` may refuse until risk is acknowledged. Use **`openclaw onboard --non-interactive --accept-risk --workspace <WORKSPACE>`** (and **`--auth-choice skip`** if the API key will be added manually via **`auth-profiles.json`** in §4). Read [OpenClaw security](https://docs.openclaw.ai/security) with the human before **`--accept-risk`**.
+
 Run onboarding **with the gateway reachable** if the wizard expects it (some versions need `openclaw gateway` in another terminal first).
 
 ---
