@@ -83,6 +83,8 @@ mkdir -p "/Users/MAC_USER/clawd/memory"
 
 **OpenClaw ≥ 2026.4.x (non-interactive):** `openclaw setup --non-interactive` may refuse until risk is acknowledged. Use **`openclaw onboard --non-interactive --accept-risk --workspace <WORKSPACE>`** (and **`--auth-choice skip`** if the API key will be added manually via **`auth-profiles.json`** in §4). Read [OpenClaw security](https://docs.openclaw.ai/security) with the human before **`--accept-risk`**.
 
+If onboard prints **Gateway did not become reachable** on **`ws://127.0.0.1:18789`**, that is normal when no gateway was running yet: config can still be **Updated** / **Workspace OK**. Then either start **`openclaw gateway run`** (foreground), **`openclaw gateway install`** + **`start`** for a service, re-onboard with **`--install-daemon`**, or pass **`--skip-health`** on onboard to skip the probe.
+
 Run onboarding **with the gateway reachable** if the wizard expects it (some versions need `openclaw gateway` in another terminal first).
 
 ---
