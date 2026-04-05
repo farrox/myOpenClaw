@@ -23,24 +23,27 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 ## Verified on workspace environment (2026-04-05)
 
-Commands: `sudo -u ed bash -lc '…'` (non-login, non-interactive).
+**Node / nvm:** Per [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md) (nvm + Node 22 or current LTS).
 
 | Check | Result |
 |--------|--------|
+| **nvm** | Installed under **`~/.nvm`** (installer **v0.40.1**); **`curl`** was missing for **`ed`**, used **`wget -qO- … \| bash`** for the install script. |
+| **Node** | **`v22.22.2`** (npm **10.9.7**); **`nvm alias default 22`**. |
+| **Login `PATH`** | After adding nvm load to **`~/.profile`**, **`bash -l -c 'command -v node && node -v; command -v npm && npm -v'`** succeeds (see changelog). Without **`~/.profile`** nvm init, **`bash -l -c`** did **not** see `node` because **`~/.bashrc`** returns early for non-interactive shells and never reached the nvm lines at EOF. |
+| `sudo -u ed bash -lc 'command -v node && node -v; …'` | **OK** (`-l` = login → **`.profile`** runs). |
 | `~/clawd` | **Missing** |
 | `~/.openclaw` | **Missing** |
-| `node` / `npm` on `PATH` | **Not found** (may exist in login shell / nvm — **verify** `bash -ilc 'command -v node'` on mypc) |
-| `openclaw` | **Not on `PATH`** |
-| `pass-cli` | **Not on `PATH`** |
+| `openclaw` | **Not on `PATH`** yet |
+| `pass-cli` | **Not on `PATH`** yet |
 | `gcalcli` | **`/usr/bin/gcalcli`** present |
 
-**Assumption:** Ed’s **interactive** desktop or login shell may load nvm/fnm/asdf or `~/.local/bin`; the table above is intentionally conservative.
+**Optional:** `sudo apt install curl` so future nvm/docs that assume `curl` match this box.
 
 ---
 
 ## Progress checklist (OpenClaw)
 
-- [ ] Node.js LTS + npm; global bin on `PATH` for sessions that will run the gateway (including RDP/XFCE if used).
+- [x] Node.js LTS + npm; global bin on `PATH` for **login** shells (`bash -l`, SSH login, **`bash -lc`**). **Re-check** RDP/XFCE session `PATH` when you run the gateway from the GUI (may need desktop env or **`~/.xsessionrc`** if `node` is missing there).
 - [ ] `npm install -g openclaw`; `command openclaw --version` works (no shell wrapper deadlock).
 - [ ] `mkdir -p ~/clawd/memory`; `SECURITY.md`, `TOOLS.md`, `SCHEDULING.md` in `~/clawd` (from repo templates / ACIP).
 - [ ] `~/.openclaw/openclaw.json` → `agents.defaults.workspace` = `/home/ed/clawd` (or equivalent).
@@ -56,6 +59,19 @@ Commands: `sudo -u ed bash -lc '…'` (non-login, non-interactive).
 ## Changelog / steps log
 
 ### 2026-04-05
+
+- **nvm + Node 22:** installed for **`ed`** (`nvm` **v0.40.1**, Node **v22.22.2**, npm **10.9.7**). Install used **`wget`** because **`curl`** was not on **`ed`**’s PATH.
+- **`~/.profile`:** source **`nvm.sh`** so **`bash -l -c`** / login non-interactive shells see **`node`** / **`npm`** (aligns with [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md) verification pattern).
+- **Confirm (login environment):**
+  ```text
+  /home/ed/.nvm/versions/node/v22.22.2/bin/node
+  v22.22.2
+  /home/ed/.nvm/versions/node/v22.22.2/bin/npm
+  10.9.7
+  ```
+  (from `sudo -u ed bash -l -c 'command -v node && node -v; command -v npm && npm -v'`.)
+
+### 2026-04-05 (earlier)
 
 - **Added** this file (`ubuntu_status.md`).
 - **README.md:** linked this doc in the documentation table.

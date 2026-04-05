@@ -35,7 +35,7 @@ Remote assistants sometimes run **`bash -lc '…'`** (non-login, non-interactive
 
 **Goal:** match how **`ed`** actually starts the gateway (interactive terminal, tmux, or desktop shortcut)—that environment’s **`PATH`** is what matters.
 
-**Node install method on this class of machine:** **[nvm](https://github.com/nvm-sh/nvm)** + **Node 22** (or current LTS), then **`npm install -g openclaw`**. Do **not** use **`sudo npm install -g`** with nvm’s Node. Ensure login shells load nvm (installer usually adds lines to **`~/.bashrc`**); for **GUI-launched** apps that need `node`/`openclaw` on `PATH`, you may also need **`~/.profile`** or your desktop environment’s session **`PATH`**—see **`LLM_ASSISTANT_SETUP_GUIDE.md`** §1 and related notes.
+**Node install method on this class of machine:** **[nvm](https://github.com/nvm-sh/nvm)** + **Node 22** (or current LTS), then **`npm install -g openclaw`**. Do **not** use **`sudo npm install -g`** with nvm’s Node. The nvm installer appends to **`~/.bashrc`**, but Debian/Ubuntu **`~/.bashrc`** often **returns immediately** for non-interactive shells—so **`bash -l -c 'command -v node'`** may still fail unless **`nvm.sh`** is also sourced from **`~/.profile`** (before or independent of the interactive guard). For **GUI-launched** apps that need `node`/`openclaw` on `PATH`, you may also need your desktop environment’s session **`PATH`**—see **`LLM_ASSISTANT_SETUP_GUIDE.md`** §1 and **`ubuntu_status.md`** for what was applied on **`mypc`**.
 
 ---
 
