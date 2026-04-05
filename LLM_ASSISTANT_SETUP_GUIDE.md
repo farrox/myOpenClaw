@@ -1,6 +1,6 @@
 # Guide for LLMs: Setting Up OpenClaw for Another Person
 
-**Audience:** You are an AI assistant helping configure **OpenClaw** on someone else's Mac (e.g. a spouse or family member).  
+**Audience:** You are an AI assistant helping configure **OpenClaw** on someone else’s machine—often **macOS**, but the same playbook applies to a **Linux desktop** (e.g. Ubuntu) with path and tooling adjustments below.  
 **Human operator:** The account owner sits at the keyboard for browser logins, passwords, and sudo.  
 **Repository:** This file lives in `myOpenClaw`; it is **not** a substitute for [OpenClaw’s own docs](https://docs.openclaw.ai).
 
@@ -10,9 +10,20 @@
 |-------------|---------|
 | `OWNER_EMAIL` | Personal email that is **trusted** for instructions (e.g. `name@pm.me`) |
 | `ASSISTANT_EMAIL` | Dedicated Gmail (or Google account) **only** for the assistant |
-| `MAC_USER` | Short macOS username (home = `/Users/MAC_USER`) |
+| `MAC_USER` | Short **macOS** username (home = `/Users/MAC_USER`) |
+| `LINUX_USER` | Short **Linux** username (home = `/home/LINUX_USER`) |
 | `VAULT_NAME` | Proton Pass vault name, or 1Password vault name |
-| `WORKSPACE` | Agent workspace directory (recommended: `/Users/MAC_USER/clawd`) |
+| `WORKSPACE` | Agent workspace directory (recommended: `~/clawd` on either OS) |
+
+### Linux / Ubuntu workstation (e.g. `mypc`)
+
+If the target is **Ubuntu** or another **Linux desktop**, not a Mac:
+
+1. Read **`UBUNTU_WORKSTATION_NOTES.md`** in this repo first (Noble/22.04 notes, **xrdp** + XFCE/Cinnamon, **NVIDIA 470 + DKMS** on Kepler, **GitHub SSH**, apt/third-party repos).
+2. Use **`LINUX_USER`** and paths like **`/home/LINUX_USER/clawd`** (or `~/clawd` after `sudo -u user` / SSH as that user).
+3. Install **Node.js** (e.g. **nvm** + Node 22, or distro packages if new enough), then `npm install -g openclaw`. Verify with `command openclaw --version`.
+4. **§10 Shell pitfalls** (recursive **`openclaw`** function on **zsh**) is **macOS-oriented**; on default **bash** it often does not apply—still use **`command openclaw`** if the shell aliases or wraps `openclaw`.
+5. **Control UI in a browser on another machine:** if the gateway runs on the Linux host, use **`openclaw tui`** over SSH, or **SSH local forwarding** (e.g. `ssh -L 18789:127.0.0.1:18789 LINUX_USER@host`) and open the forwarded URL on the client, unless the human runs a browser **on the Linux desktop** itself.
 
 ---
 
@@ -28,12 +39,22 @@
 
 ## 1. Preconditions (verify with commands)
 
-- macOS with **Xcode Command Line Tools** (or full Xcode if they use dev tools heavily).
-- **Node.js** LTS or current (e.g. via `nvm` or official installer). Check: `node -v`, `npm -v`.
-- **Homebrew** (typical on Mac): `which brew`.
-- **npm global bin** on `PATH` (e.g. `~/.local/bin` or brew’s npm path). OpenClaw installs to something like `/usr/local/bin/openclaw` or via nvm’s global prefix.
+**macOS**
 
-If `openclaw --version` hangs: see **§10 Shell pitfalls**.
+- **Xcode Command Line Tools** (or full Xcode if they use dev tools heavily).
+- **Homebrew** (typical): `which brew`.
+- **npm global bin** on `PATH` (e.g. `~/.local/bin` or brew’s npm path). OpenClaw may live under `/usr/local/bin/openclaw` or nvm’s prefix.
+
+**Linux (Ubuntu, etc.)**
+
+- Build tools only if needed for DKMS/NVIDIA or from-source steps (see **`UBUNTU_WORKSTATION_NOTES.md`**).
+- **Node.js** via **nvm** or distro; ensure global npm `bin` is on `PATH` for the login used to run OpenClaw.
+
+**Both**
+
+- **Node.js** LTS or current. Check: `node -v`, `npm -v`.
+
+If `openclaw --version` hangs: see **§10 Shell pitfalls** (especially on macOS **zsh**).
 
 ---
 
@@ -227,6 +248,7 @@ If `pass-cli` lives in `~/.local/bin`, ensure that directory is on `PATH` for **
 
 | File | Use |
 |------|-----|
+| `UBUNTU_WORKSTATION_NOTES.md` | Ubuntu desktop + SSH + RDP + GPU + GitHub SSH (use with **Linux** targets). |
 | `SETUP_GUIDE.md` | Long-form walkthrough (1Password-heavy legacy sections + April 2026 addendum) |
 | `OpenClaw_Complete_Guide.md` | Full security methodology |
 | `PROTON_PASS_SETUP.md` / `QUICK_START_PROTON.md` | Proton Pass CLI |
