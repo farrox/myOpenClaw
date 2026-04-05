@@ -13,7 +13,7 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 | Machine | `mypc` | Verified: kernel hostname in `uname` is `mypc`. |
 | OS | Ubuntu 24.04.4 LTS (noble) desktop | Verified: `lsb_release -a`; kernel `6.8.0-107-generic`. |
 | Primary user | `ed` | Verified under `sudo -u ed`. |
-| Agent workspace | `~/clawd` | **Not created yet** (see below). |
+| Agent workspace | `~/clawd` | Populated from Mac via **rsync**; **`openclaw onboard`** reports **Workspace OK: ~/clawd**. |
 | Repo clone | `~/Developer/myOpenClaw` | This file lives here. |
 | Secrets | Proton Pass (`pass-cli`) | Install + PATH TBD. |
 | Remote access | SSH + RDP (xrdp + Cinnamon) | See [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md). |
@@ -31,8 +31,8 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 | **Node** | **`v22.22.2`** (npm **10.9.7**); **`nvm alias default 22`**. |
 | **Login `PATH`** | After adding nvm load to **`~/.profile`**, **`bash -l -c 'command -v node && node -v; command -v npm && npm -v'`** succeeds (see changelog). Without **`~/.profile`** nvm init, **`bash -l -c`** did **not** see `node` because **`~/.bashrc`** returns early for non-interactive shells and never reached the nvm lines at EOF. |
 | `sudo -u ed bash -lc 'command -v node && node -v; …'` | **OK** (`-l` = login → **`.profile`** runs). |
-| `~/clawd` | **Missing** |
-| `~/.openclaw` | **Missing** |
+| `~/clawd` | **Present** (`SECURITY.md`, **`TOOLS.md`**, **`SCHEDULING.md`**, **`memory/`**, etc.). |
+| `~/.openclaw` | **Present** after **`openclaw onboard`**; **`openclaw.json`** updated; sessions under **`~/.openclaw/agents/main/sessions`**. |
 | `openclaw` | **OpenClaw 2026.4.2** (`d74a122`) under nvm’s global bin after **`nvm.sh`** is sourced; **`command openclaw --version`** OK in that environment. Interactive SSH without loading nvm still shows **`npm`/`openclaw` not found** until **`~/.bashrc`** loads nvm (see changelog). |
 | `pass-cli` | **Not on `PATH`** yet |
 | `gcalcli` | **`/usr/bin/gcalcli`** present |
@@ -45,8 +45,8 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 - [x] Node.js LTS + npm; global bin on `PATH` for **login** shells (`bash -l`, SSH login, **`bash -lc`**). **Re-check** RDP/XFCE session `PATH` when you run the gateway from the GUI (may need desktop env or **`~/.xsessionrc`** if `node` is missing there).
 - [x] `npm install -g openclaw`; `command openclaw --version` works (no shell wrapper deadlock). **482 packages** in ~1m; npm suggested upgrading itself to 11.x (optional).
-- [ ] `mkdir -p ~/clawd/memory`; `SECURITY.md`, `TOOLS.md`, `SCHEDULING.md` in `~/clawd` (from repo templates / ACIP).
-- [ ] `~/.openclaw/openclaw.json` → `agents.defaults.workspace` = `/home/ed/clawd` (or equivalent).
+- [x] `mkdir -p ~/clawd/memory`; `SECURITY.md`, `TOOLS.md`, `SCHEDULING.md` in `~/clawd` (rsync from Mac **`~/clawd`**).
+- [x] `~/.openclaw/openclaw.json` updated via **`openclaw onboard --non-interactive --accept-risk --workspace /home/ed/clawd --auth-choice skip --mode local`** (CLI prints **Workspace OK: ~/clawd**).
 - [ ] Anthropic `auth-profiles.json` correct shape; `chmod 600`.
 - [ ] `chmod 700` `~/.openclaw` and `~/.openclaw/credentials`.
 - [ ] `exec-approvals.json` + `tools.exec` allowlist; `pass-cli` path allowlisted after install.
@@ -57,6 +57,11 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 ---
 
 ## Changelog / steps log
+
+### 2026-04-05 (onboard)
+
+- **`openclaw onboard --non-interactive --accept-risk`** with **`--workspace /home/ed/clawd`**, **`--auth-choice skip`**, **`--mode local`**: updated **`~/.openclaw/openclaw.json`**; **Workspace OK: ~/clawd**; **Sessions OK: ~/.openclaw/agents/main/sessions**.
+- **Next:** Anthropic **`auth-profiles.json`** + **`chmod 600`**, **`chmod 700 ~/.openclaw`**, then **`openclaw doctor`** / **`openclaw gateway`**.
 
 ### 2026-04-05 (OpenClaw CLI)
 
@@ -86,4 +91,4 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 ---
 
-*Next update: after `~/clawd` + `openclaw onboard` / first `openclaw gateway` run — paste command outputs into the changelog (redact secrets).*
+*Next update: after `auth-profiles.json` + first `openclaw gateway` / dashboard smoke test — paste command outputs into the changelog (redact secrets).*
