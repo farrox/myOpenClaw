@@ -257,6 +257,7 @@ If `pass-cli` lives in `~/.local/bin`, ensure that directory is on `PATH` for **
 | `OpenClaw_Complete_Guide.md` | Full security methodology |
 | `PROTON_PASS_SETUP.md` / `QUICK_START_PROTON.md` | Proton Pass CLI |
 | `SUCCESS.md` / `HOW_TO_USE.md` | Operator quick reference (customize paths/emails per person) |
+| `SELLER_AGENT_LLM_GUIDE.md` | Seller agent: `Transfer` folders, multi-platform listing **drafts**, human publishes. |
 | `TROUBLESHOOTING.md` | Gateway / CLI issues |
 
 ---
