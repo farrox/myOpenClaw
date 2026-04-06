@@ -38,8 +38,7 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 | `openclaw` | **OpenClaw 2026.4.2** (`d74a122`) under nvm’s global bin after **`nvm.sh`** is sourced; **`command openclaw --version`** OK in that environment. Interactive SSH without loading nvm still shows **`npm`/`openclaw` not found** until **`~/.bashrc`** loads nvm (see changelog). |
 | `pass-cli` | **`~/.local/bin/pass-cli`** v1.9.0; on **`PATH`** in login shell for **`ed`** |
 | `gcalcli` | **`/usr/bin/gcalcli`** present |
-
-**Optional:** `sudo apt install curl` so future nvm/docs that assume `curl` match this box.
+| **`curl`** | **`/usr/bin/curl`** **8.5.0** (apt **`curl_8.5.0-2ubuntu10.8`**, installed **2026-04-05**) — Proton **`install.sh`** and docs that assume **`curl`** now work. |
 
 ---
 
@@ -71,6 +70,10 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 ---
 
 ## Changelog / steps log
+
+### 2026-04-05 (`curl` via apt)
+
+- **`sudo apt install curl`** completed (package **`curl_8.5.0-2ubuntu10.8_amd64`**). **`curl --version`** → **8.5.0** at **`/usr/bin/curl`**. Proton Pass **`install.sh`** can be used for future upgrades alongside the existing manual **1.9.0** binary.
 
 ### 2026-04-05 (TEMP_REMOTE_CLIPBOARD_HANDOFF — automated pass-cli + smoke notes)
 

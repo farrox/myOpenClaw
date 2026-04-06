@@ -57,13 +57,14 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 - [x] **`openclaw security audit`**: 0 critical (2 WARN + 1 INFO documented in **ubuntu_status** changelog).
 - [x] **`~/.openclaw/emergency_shutdown.sh`** (executable, owner-only).
 - [x] **Seller wiring (on disk, not in repo):** **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`**, **`TOOLS.md`** seller section, **`AGENTS.md`** hook, **`Transfer/items/`** + **`LAYOUT.txt`**, **`~/clawd/Transfer`** → **`/home/ed/Transfer`**.
+- [x] **`curl`** (apt) — **`/usr/bin/curl`** **8.5.0**; official Proton **`install.sh`** and other **`curl`**-based scripts work.
 
 **Open / still to do:**
 
 - [ ] **Control UI / pairing** — Gateway listens on **`127.0.0.1:18789`** and **`openclaw health`** works; CLI **`openclaw agent`** may report **pairing required** until Ed completes **dashboard** / **tui** / device pairing. Re-check **RDP/Cinnamon `PATH`** if **`openclaw`** is missing there.
 - [ ] **`pass-cli login`** — Binary installed (v1.9.0); Ed runs **`pass-cli login`** interactively when ready.
 - [ ] **Seller first listing** — No per-**`<slug>`** photo folders yet under **`Transfer/items/`** (only **`LAYOUT.txt`**); add photos then run seller workflow.
-- [ ] **Optional:** **`tools.exec.strictInlineEval=true`**, **`sudo apt install curl`** (enables official Proton **`install.sh`** next time).
+- [ ] **Optional:** **`tools.exec.strictInlineEval=true`** (addresses **`find`** allowlist WARN in audit).
 
 ---
 
@@ -73,7 +74,7 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 
 2. **Proton Pass (`pass-cli`)** — Run **`pass-cli login`** (interactive). Binary and exec allowlist are on **`mypc`**; see **`~/clawd/TOOLS.md`** for Ubuntu install note.
 
-3. **Optional hardening** — Consider **`tools.exec.strictInlineEval=true`** for the **`find`** allowlist interpreter note (see **ubuntu_status** changelog). **`sudo apt install curl`** for script parity and future Proton **`install.sh`** upgrades.
+3. **Optional hardening** — Consider **`tools.exec.strictInlineEval=true`** for the **`find`** allowlist interpreter note (see **ubuntu_status** changelog).
 
 4. **Seller agent first run** — Add photos under **`/home/ed/Transfer/items/<slug>/`**, then follow **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`**. Approve **exec** prompts for tools not yet on the allowlist.
 
@@ -90,6 +91,7 @@ bash -l -c 'command -v openclaw && openclaw --version'
 bash -l -c 'command -v node && node -v && command -v npm && npm -v'
 bash -l -c 'openclaw approvals get | head -40'
 bash -l -c 'openclaw security audit'
+command -v curl >/dev/null && curl --version | head -1
 test -f ~/clawd/SELLER_AGENT_LLM_GUIDE.md && echo seller_guide:ok
 test -L ~/clawd/Transfer -o -d ~/clawd/Transfer && echo clawd_transfer:ok
 ls -la ~/clawd/Transfer /home/ed/Transfer/items 2>/dev/null | head -8
