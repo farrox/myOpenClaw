@@ -1,5 +1,7 @@
 # Ubuntu status — `mypc` (OpenClaw track)
 
+**Next LLM:** start from **[LLM_RESUME_CHECKPOINT.md](LLM_RESUME_CHECKPOINT.md)** for the resume point and ordered next tasks, then use this file as the **living technical log**.
+
 Living log of **what we verified**, **what we assumed**, and **steps taken** for OpenClaw on this household Ubuntu workstation. Update this file as install/config progresses; commit and push with meaningful messages.
 
 **Canonical context:** [LLM_ASSISTANT_SETUP_GUIDE.md](LLM_ASSISTANT_SETUP_GUIDE.md) + [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md). Day‑2 ops: [HOW_TO_USE.md](HOW_TO_USE.md), [SUCCESS.md](SUCCESS.md). Proton: [PROTON_PASS_SETUP.md](PROTON_PASS_SETUP.md), [QUICK_START_PROTON.md](QUICK_START_PROTON.md).
@@ -69,6 +71,10 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 ## Changelog / steps log
 
+### 2026-04-05 (LLM handoff doc)
+
+- Added **`LLM_RESUME_CHECKPOINT.md`** — **start here** for the next LLM on **`mypc`**; linked from **README**, **LLM_ASSISTANT_SETUP_GUIDE.md**, **SELLER_AGENT_LLM_GUIDE.md**, and this file’s header.
+
 ### 2026-04-05 (exec hardening + emergency script)
 
 - **`exec-approvals.json`** created/updated; **`openclaw.json`** **`tools.exec`** aligned with allowlist mode.
@@ -115,4 +121,4 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 ---
 
-*Next update: after `auth-profiles.json` + first `openclaw gateway` / dashboard smoke test — paste command outputs into the changelog (redact secrets).*
+*Next update: after **gateway + dashboard smoke test** and/or **`pass-cli`** allowlist — paste command outputs into the changelog (redact secrets). See **[LLM_RESUME_CHECKPOINT.md](LLM_RESUME_CHECKPOINT.md)**.*

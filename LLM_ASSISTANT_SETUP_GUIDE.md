@@ -24,6 +24,7 @@ If the target is **Ubuntu** or another **Linux desktop**, not a Mac:
 3. Install **Node.js** (e.g. **nvm** + Node 22, or distro packages if new enough), then `npm install -g openclaw`. Verify with `command openclaw --version`.
 4. **§10 Shell pitfalls** (recursive **`openclaw`** function on **zsh**) is **macOS-oriented**; on default **bash** it often does not apply—still use **`command openclaw`** if the shell aliases or wraps `openclaw`.
 5. **Control UI in a browser on another machine:** if the gateway runs on the Linux host, use **`openclaw tui`** over SSH, or **SSH local forwarding** (e.g. `ssh -L 18789:127.0.0.1:18789 LINUX_USER@host`) and open the forwarded URL on the client, unless the human runs a browser **on the Linux desktop** itself.
+6. **Resuming an in-progress Ubuntu household machine (`mypc`):** read **`LLM_RESUME_CHECKPOINT.md`** first for the exact checkpoint and next tasks, then **`ubuntu_status.md`** for the living log.
 
 ---
 
@@ -252,7 +253,9 @@ If `pass-cli` lives in `~/.local/bin`, ensure that directory is on `PATH` for **
 
 | File | Use |
 |------|-----|
+| `LLM_RESUME_CHECKPOINT.md` | **Resume here** for Ed’s Ubuntu **`mypc`**: what’s done, what’s next, read order. |
 | `UBUNTU_WORKSTATION_NOTES.md` | Ubuntu desktop + SSH + RDP + GPU + GitHub SSH (use with **Linux** targets). |
+| `ubuntu_status.md` | Living log for **`mypc`** OpenClaw install (verify on machine; commit updates to git). |
 | `SETUP_GUIDE.md` | Long-form walkthrough (1Password-heavy legacy sections + April 2026 addendum) |
 | `OpenClaw_Complete_Guide.md` | Full security methodology |
 | `PROTON_PASS_SETUP.md` / `QUICK_START_PROTON.md` | Proton Pass CLI |
@@ -262,4 +265,4 @@ If `pass-cli` lives in `~/.local/bin`, ensure that directory is on `PATH` for **
 
 ---
 
-*Last updated: April 2, 2026*
+*Last updated: April 5, 2026*

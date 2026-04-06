@@ -5,7 +5,7 @@ A comprehensive security guide for deploying OpenClaw as your virtual executive 
 **Adapted by:** Ed Shah  
 **Original Author:** Bill D'Alessandro ([@BillDA](https://twitter.com/BillDA))  
 **Version:** 2026.2.1  
-**Last Updated:** April 2, 2026
+**Last Updated:** April 5, 2026
 
 ---
 
@@ -40,6 +40,7 @@ command openclaw --version
 
 | Document | Who it’s for |
 |----------|----------------|
+| **[LLM_RESUME_CHECKPOINT.md](LLM_RESUME_CHECKPOINT.md)** | **Next LLM session** on Ed’s **Ubuntu `mypc`**: resume point, completed vs open tasks, read order (start here before **ubuntu_status**). |
 | **[LLM_ASSISTANT_SETUP_GUIDE.md](LLM_ASSISTANT_SETUP_GUIDE.md)** | **Another LLM** installing OpenClaw for a family member (checklist, `auth-profiles` format, exec hardening, pitfalls). |
 | [SETUP_GUIDE.md](SETUP_GUIDE.md) | Long human walkthrough (includes April 2026 addendum + legacy 1Password sections). |
 | [OpenClaw_Complete_Guide.md](OpenClaw_Complete_Guide.md) | Full security methodology (markdown “source”). |
@@ -96,9 +97,13 @@ Operational files (not in git) typically live under **`~/.openclaw/`** and **`~/
 ```
 myOpenClaw/
 ├── README.md                          # This file
+├── LLM_RESUME_CHECKPOINT.md           # Next LLM: resume point for Ubuntu mypc + OpenClaw
 ├── OpenClaw_Complete_Guide.md         # Full security guide (markdown)
 ├── LLM_ASSISTANT_SETUP_GUIDE.md       # Instructions for LLMs doing a household install
 ├── SETUP_GUIDE.md                     # Step-by-step setup (+ April 2026 addendum)
+├── UBUNTU_WORKSTATION_NOTES.md        # mypc Linux / RDP / GPU / SSH
+├── ubuntu_status.md                   # Living install log (mypc)
+├── SELLER_AGENT_LLM_GUIDE.md          # Transfer → listing drafts
 ├── PROTON_PASS_SETUP.md               # Proton Pass CLI
 ├── HOW_TO_USE.md / SUCCESS.md         # Operator notes (customize per machine)
 ├── TROUBLESHOOTING.md
@@ -109,7 +114,7 @@ myOpenClaw/
     └── README_PDF_GENERATION.md
 ```
 
-**On each Mac:** `~/.openclaw/` (OpenClaw state, **never commit**), `~/clawd/` (agent workspace: `TOOLS.md`, `SECURITY.md`, etc.).
+**On each machine (Mac or Ubuntu):** `~/.openclaw/` (OpenClaw state, **never commit**), `~/clawd/` (agent workspace: `TOOLS.md`, `SECURITY.md`, etc.).
 
 ---
 
@@ -552,6 +557,6 @@ This project was completed in a single session on February 1, 2026, including:
 
 *For questions, improvements, or contributions, update this repository and regenerate the PDF.*
 
-**Last Updated:** April 2, 2026  
+**Last Updated:** April 5, 2026  
 **Project Status:** Maintained (docs + LaTeX tooling)  
 **Ready to Deploy:** Yes — follow `SETUP_GUIDE.md` or `LLM_ASSISTANT_SETUP_GUIDE.md` per machine

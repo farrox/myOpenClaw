@@ -126,6 +126,7 @@ Reply with: what you **can** do now (files updated, text ready), what **requires
 
 | File | Use |
 |------|-----|
+| [LLM_RESUME_CHECKPOINT.md](LLM_RESUME_CHECKPOINT.md) | Where the Ubuntu / OpenClaw setup **paused**; first seller runs after gateway smoke test. |
 | [LLM_ASSISTANT_SETUP_GUIDE.md](LLM_ASSISTANT_SETUP_GUIDE.md) | OpenClaw install, `auth-profiles`, gateway, exec safety. |
 | [SUCCESS.md](SUCCESS.md) | Exec allowlists, `openclaw.json` patterns. |
 | [HOW_TO_USE.md](HOW_TO_USE.md) | Day‑2 operator usage. |
@@ -133,4 +134,4 @@ Reply with: what you **can** do now (files updated, text ready), what **requires
 
 ---
 
-*Last updated: April 5, 2026 — align with Ed’s actual `Transfer` layout and any future eBay API integration.*
+*Last updated: April 5, 2026 — align with Ed’s actual `Transfer` layout, **LLM_RESUME_CHECKPOINT.md**, and any future eBay API integration.*
