@@ -17,7 +17,7 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 | Primary user | `ed` | Verified under `sudo -u ed`. |
 | Agent workspace | `~/clawd` | Populated from Mac via **rsync**; **`openclaw onboard`** reports **Workspace OK: ~/clawd**. |
 | Repo clone | `~/Developer/myOpenClaw` | This file lives here. |
-| Secrets | Proton Pass (`pass-cli`) | Binary **`~/.local/bin/pass-cli`** v1.9.0 (manual install 2026-04-05); **`pass-cli login`** still for Ed. |
+| Secrets | Proton Pass (`pass-cli`) | Binary **`~/.local/bin/pass-cli`** v1.9.0; **authenticated** ( **`pass-cli login`** → *Already authenticated* when re-run **2026-04-05**). |
 | Remote access | SSH + RDP (xrdp + Cinnamon) | See [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md). |
 | GPU | NVIDIA 470 / Kepler | Driver notes in workstation doc. |
 
@@ -70,6 +70,10 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 ---
 
 ## Changelog / steps log
+
+### 2026-04-05 (`pass-cli` session)
+
+- **`pass-cli login`:** CLI reports **Already authenticated** — existing Proton session on this machine (no new login needed unless **`pass-cli logout`** is used).
 
 ### 2026-04-05 (`pass-cli` not in PATH in GUI terminal)
 
@@ -143,4 +147,4 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 ---
 
-*Next update: after Ed runs **`pass-cli login`** and **dashboard/tui pairing** — paste command outputs into the changelog (redact secrets). See **[LLM_RESUME_CHECKPOINT.md](LLM_RESUME_CHECKPOINT.md)**.*
+*Next update: **seller** workflow when **`/home/ed/Transfer/items/<slug>/`** has photos, or optional **`tools.exec.strictInlineEval`**. See **[LLM_RESUME_CHECKPOINT.md](LLM_RESUME_CHECKPOINT.md)**.*

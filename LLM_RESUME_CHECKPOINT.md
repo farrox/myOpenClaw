@@ -59,10 +59,10 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 - [x] **Seller wiring (on disk, not in repo):** **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`**, **`TOOLS.md`** seller section, **`AGENTS.md`** hook, **`Transfer/items/`** + **`LAYOUT.txt`**, **`~/clawd/Transfer`** → **`/home/ed/Transfer`**.
 - [x] **`curl`** (apt) — **`/usr/bin/curl`** **8.5.0**; official Proton **`install.sh`** and other **`curl`**-based scripts work.
 - [x] **Gateway + Control UI** — **`openclaw gateway run`** + **`openclaw dashboard`** verified (2026-04-05); webchat + RPCs OK. **Never** share dashboard URLs (**`#token=`**); treat as a secret.
+- [x] **`pass-cli`** — Authenticated (**`pass-cli login`** reports *Already authenticated* **2026-04-05**).
 
 **Open / still to do:**
 
-- [ ] **`pass-cli login`** — Binary installed (v1.9.0); Ed runs **`pass-cli login`** interactively when ready.
 - [ ] **Seller first listing** — No per-**`<slug>`** photo folders yet under **`Transfer/items/`** (only **`LAYOUT.txt`**); add photos then run seller workflow.
 - [ ] **Optional:** **`tools.exec.strictInlineEval=true`** (addresses **`find`** allowlist WARN in audit).
 
@@ -70,13 +70,11 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 
 ## Next tasks (numbered — do in order; update **ubuntu_status.md** when done)
 
-1. **Proton Pass (`pass-cli`)** — Run **`pass-cli login`** (interactive). Binary and exec allowlist are on **`mypc`**; see **`~/clawd/TOOLS.md`** for Ubuntu install note.
+1. **Seller agent first run** — Add photos under **`/home/ed/Transfer/items/<slug>/`**, then follow **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`**. Approve **exec** prompts for tools not yet on the allowlist.
 
 2. **Optional hardening** — Consider **`tools.exec.strictInlineEval=true`** for the **`find`** allowlist interpreter note (see **ubuntu_status** changelog).
 
-3. **Seller agent first run** — Add photos under **`/home/ed/Transfer/items/<slug>/`**, then follow **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`**. Approve **exec** prompts for tools not yet on the allowlist.
-
-4. **Repo hygiene** — After changes, **`git commit` + `git push`** from **`~/Developer/myOpenClaw`** (no secrets).
+3. **Repo hygiene** — After changes, **`git commit` + `git push`** from **`~/Developer/myOpenClaw`** (no secrets).
 
 ---
 
@@ -98,4 +96,4 @@ command -v pass-cli >/dev/null && echo pass_cli:ok || echo pass_cli:missing
 
 ---
 
-*Last checkpoint update: 2026-04-05 (dashboard smoke test verified; next: **pass-cli login**) — align with **ubuntu_status.md** if dates or checkboxes diverge.*
+*Last checkpoint update: 2026-04-05 (**pass-cli** authenticated; next: **seller photos** under **`Transfer/items/`**) — align with **ubuntu_status.md** if dates or checkboxes diverge.*
