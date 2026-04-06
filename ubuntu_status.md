@@ -71,6 +71,11 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 ## Changelog / steps log
 
+### 2026-04-05 (`pass-cli` not in PATH in GUI terminal)
+
+- **Cause:** **`~/.local/bin`** was appended in **`~/.profile`** only. GUI terminals start **non-login** interactive bash → **`~/.bashrc`** runs, **`~/.profile`** does not → **`pass-cli`** missing even though **`/home/ed/.local/bin/pass-cli`** exists.
+- **Fix:** Append the same **`if [ -d "$HOME/.local/bin" ]; then PATH=…`** block to **`~/.bashrc`** after nvm (see file on **`mypc`**). New terminals: **`pass-cli`** resolves; existing tabs: **`source ~/.bashrc`** or open a new terminal.
+
 ### 2026-04-05 (gateway + dashboard smoke test — Ed)
 
 - **`openclaw gateway run`** + **`openclaw dashboard`**: gateway on **127.0.0.1:18789**, Control UI webchat connected, **`device.pair.list`** / **`chat.history`** / **`models.list`** succeeded per gateway log. Model **anthropic/claude-opus-4-6**. **Reminder:** dashboard links embed a **token** in the URL — never commit or share; regenerate if exposed.
