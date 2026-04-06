@@ -58,10 +58,10 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 - [x] **`~/.openclaw/emergency_shutdown.sh`** (executable, owner-only).
 - [x] **Seller wiring (on disk, not in repo):** **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`**, **`TOOLS.md`** seller section, **`AGENTS.md`** hook, **`Transfer/items/`** + **`LAYOUT.txt`**, **`~/clawd/Transfer`** → **`/home/ed/Transfer`**.
 - [x] **`curl`** (apt) — **`/usr/bin/curl`** **8.5.0**; official Proton **`install.sh`** and other **`curl`**-based scripts work.
+- [x] **Gateway + Control UI** — **`openclaw gateway run`** + **`openclaw dashboard`** verified (2026-04-05); webchat + RPCs OK. **Never** share dashboard URLs (**`#token=`**); treat as a secret.
 
 **Open / still to do:**
 
-- [ ] **Control UI / pairing** — Gateway listens on **`127.0.0.1:18789`** and **`openclaw health`** works; CLI **`openclaw agent`** may report **pairing required** until Ed completes **dashboard** / **tui** / device pairing. Re-check **RDP/Cinnamon `PATH`** if **`openclaw`** is missing there.
 - [ ] **`pass-cli login`** — Binary installed (v1.9.0); Ed runs **`pass-cli login`** interactively when ready.
 - [ ] **Seller first listing** — No per-**`<slug>`** photo folders yet under **`Transfer/items/`** (only **`LAYOUT.txt`**); add photos then run seller workflow.
 - [ ] **Optional:** **`tools.exec.strictInlineEval=true`** (addresses **`find`** allowlist WARN in audit).
@@ -70,15 +70,13 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 
 ## Next tasks (numbered — do in order; update **ubuntu_status.md** when done)
 
-1. **Human smoke test + pairing** — **`openclaw dashboard`** or **`openclaw tui`** from the session Ed actually uses; complete any **pairing** prompts so gateway-backed chat matches **`openclaw health`**. If RDP/Cinnamon lacks **`openclaw`** on **`PATH`**, fix session **`PATH`** (see **UBUNTU_WORKSTATION_NOTES.md**).
+1. **Proton Pass (`pass-cli`)** — Run **`pass-cli login`** (interactive). Binary and exec allowlist are on **`mypc`**; see **`~/clawd/TOOLS.md`** for Ubuntu install note.
 
-2. **Proton Pass (`pass-cli`)** — Run **`pass-cli login`** (interactive). Binary and exec allowlist are on **`mypc`**; see **`~/clawd/TOOLS.md`** for Ubuntu install note.
+2. **Optional hardening** — Consider **`tools.exec.strictInlineEval=true`** for the **`find`** allowlist interpreter note (see **ubuntu_status** changelog).
 
-3. **Optional hardening** — Consider **`tools.exec.strictInlineEval=true`** for the **`find`** allowlist interpreter note (see **ubuntu_status** changelog).
+3. **Seller agent first run** — Add photos under **`/home/ed/Transfer/items/<slug>/`**, then follow **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`**. Approve **exec** prompts for tools not yet on the allowlist.
 
-4. **Seller agent first run** — Add photos under **`/home/ed/Transfer/items/<slug>/`**, then follow **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`**. Approve **exec** prompts for tools not yet on the allowlist.
-
-5. **Repo hygiene** — Edit **`ubuntu_status.md`** changelog and **`git commit` + `git push`** from **`~/Developer/myOpenClaw`**.
+4. **Repo hygiene** — After changes, **`git commit` + `git push`** from **`~/Developer/myOpenClaw`** (no secrets).
 
 ---
 
@@ -100,4 +98,4 @@ command -v pass-cli >/dev/null && echo pass_cli:ok || echo pass_cli:missing
 
 ---
 
-*Last checkpoint update: 2026-04-05 (handoff: pass-cli + allowlist + automated smoke notes) — align with **ubuntu_status.md** if dates or checkboxes diverge.*
+*Last checkpoint update: 2026-04-05 (dashboard smoke test verified; next: **pass-cli login**) — align with **ubuntu_status.md** if dates or checkboxes diverge.*

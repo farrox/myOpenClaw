@@ -54,7 +54,7 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 - [x] **`pass-cli`** on exec allowlist (**`openclaw approvals allowlist add --agent main "$(command -v pass-cli)"`** → pattern **`~/.local/bin/pass-cli`**).
 - [x] **`openclaw security audit`**: **0 critical** · **2 warn** · **1 info** (see changelog — not “clean,” but no permission WARNs).
 - [x] **Gateway process + health (automated 2026-04-05):** **`ss`** shows **`127.0.0.1:18789`** **`openclaw-gatewa`**; **`openclaw health`** OK.
-- [ ] **Control UI / pairing / dashboard chat** — CLI **`openclaw agent --agent main`** returned **pairing required** on WebSocket, then **embedded fallback** succeeded (`pong` test). Ed should run **`openclaw dashboard`** / **`openclaw tui`** and finish pairing for gateway-backed UI chat.
+- [x] **Control UI / dashboard (human 2026-04-05):** **`openclaw gateway run`** — listening **`ws://127.0.0.1:18789`**, webchat connected, RPCs (**`node.list`**, **`device.pair.list`**, **`chat.history`**, **`models.list`**) OK. **`openclaw dashboard`** opened Control UI in browser. **Do not** paste dashboard URLs (they contain **`#token=`**); treat as secret and rotate if leaked.
 - [x] **`~/.openclaw/emergency_shutdown.sh`** — **`chmod 700`**, stops **`openclaw`**, strips **`check_email`** crontab lines if present, appends **`activity.log`**.
 
 ---
@@ -70,6 +70,10 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 ---
 
 ## Changelog / steps log
+
+### 2026-04-05 (gateway + dashboard smoke test — Ed)
+
+- **`openclaw gateway run`** + **`openclaw dashboard`**: gateway on **127.0.0.1:18789**, Control UI webchat connected, **`device.pair.list`** / **`chat.history`** / **`models.list`** succeeded per gateway log. Model **anthropic/claude-opus-4-6**. **Reminder:** dashboard links embed a **token** in the URL — never commit or share; regenerate if exposed.
 
 ### 2026-04-05 (`curl` via apt)
 
