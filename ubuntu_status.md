@@ -47,16 +47,39 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 - [x] `npm install -g openclaw`; `command openclaw --version` works (no shell wrapper deadlock). **482 packages** in ~1m; npm suggested upgrading itself to 11.x (optional).
 - [x] `mkdir -p ~/clawd/memory`; `SECURITY.md`, `TOOLS.md`, `SCHEDULING.md` in `~/clawd` (rsync from Mac **`~/clawd`**).
 - [x] `~/.openclaw/openclaw.json` updated via **`openclaw onboard --non-interactive --accept-risk --workspace /home/ed/clawd --auth-choice skip --mode local`** (CLI prints **Workspace OK: ~/clawd**).
-- [ ] Anthropic `auth-profiles.json` correct shape; `chmod 600`.
-- [ ] `chmod 700` `~/.openclaw` and `~/.openclaw/credentials`.
-- [ ] `exec-approvals.json` + `tools.exec` allowlist; `pass-cli` path allowlisted after install.
-- [ ] `openclaw security audit` clean of permission WARNs; `openclaw approvals get` as expected.
-- [ ] Gateway loopback bind; dashboard/chat smoke test.
-- [ ] `~/.openclaw/emergency_shutdown.sh` aligned with any cron/email scripts.
+- [x] Anthropic `auth-profiles.json` correct shape (`version` + `profiles.anthropic:default`); **`chmod 600`**.
+- [x] `chmod 700` **`~/.openclaw`**, subdirs, **`~/.openclaw/credentials`**; JSON config files **`chmod 600`** where applicable.
+- [x] **`~/.openclaw/exec-approvals.json`** — defaults **`allowlist`**, **`ask: on-miss`**, **`askFallback: deny`**, **`autoAllowSkills: false`**; agent **`main`** allowlist: **`/bin/ls`**, **`/usr/bin/find`**, **`/usr/bin/file`**, **`/usr/bin/gcalcli`**. **`openclaw.json`** → **`tools.exec`**: **`host: gateway`**, **`security: allowlist`**, **`ask: on-miss`**.
+- [ ] **`pass-cli`** on allowlist after install (**`openclaw approvals allowlist add --agent main "$HOME/.local/bin/pass-cli"`** when binary exists).
+- [x] **`openclaw security audit`**: **0 critical** · **2 warn** · **1 info** (see changelog — not “clean,” but no permission WARNs).
+- [ ] Gateway + dashboard/chat smoke test (human: **`openclaw gateway`** then **`openclaw dashboard`**).
+- [x] **`~/.openclaw/emergency_shutdown.sh`** — **`chmod 700`**, stops **`openclaw`**, strips **`check_email`** crontab lines if present, appends **`activity.log`**.
+
+---
+
+## Seller agent (Transfer → listings)
+
+- [x] **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`** — copied from **`~/Developer/myOpenClaw/SELLER_AGENT_LLM_GUIDE.md`**.
+- [x] **`~/clawd/TOOLS.md`** — new **Seller listings** + **gcalcli** Ubuntu allowlist example.
+- [x] **`~/clawd/AGENTS.md`** — session hook: read seller guide when Ed mentions Transfer / marketplaces.
+- [x] **`/home/ed/Transfer/items/`** — created; **`LAYOUT.txt`** explains one-folder-per-listing.
+- [x] **`~/clawd/Transfer`** → symlink to **`/home/ed/Transfer`**.
 
 ---
 
 ## Changelog / steps log
+
+### 2026-04-05 (exec hardening + emergency script)
+
+- **`exec-approvals.json`** created/updated; **`openclaw.json`** **`tools.exec`** aligned with allowlist mode.
+- **`chmod 700`** on **`~/.openclaw`** tree; **`~/.openclaw/credentials`** created **`700`**.
+- **`openclaw security audit`:** **0 critical**, **2 warn**, **1 info** — **`gateway.trusted_proxies_missing`** (expected if Control UI stays **loopback-only**); **`tools.exec.allowlist_interpreter_without_strict_inline_eval`** for **`/usr/bin/find`** (optional: **`tools.exec.strictInlineEval=true`** in config if you want that hardening).
+- **`emergency_shutdown.sh`** added under **`~/.openclaw/`**.
+- **Reminder:** if **`openclaw.json`** (gateway token) was ever copied into chat or logs, **rotate** the gateway token / treat as exposed.
+
+### 2026-04-05 (seller agent wiring)
+
+- See **Seller agent** checklist above (workspace + Transfer layout; not committed to git — lives under **`/home/ed/clawd`** and **`/home/ed/Transfer`**).
 
 ### 2026-04-05 (onboard)
 
