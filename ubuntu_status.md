@@ -17,7 +17,7 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 | Primary user | `ed` | Verified under `sudo -u ed`. |
 | Agent workspace | `~/clawd` | Populated from Mac via **rsync**; **`openclaw onboard`** reports **Workspace OK: ~/clawd**. |
 | Repo clone | `~/Developer/myOpenClaw` | This file lives here. |
-| Secrets | Proton Pass (`pass-cli`) | Install + PATH TBD. |
+| Secrets | Proton Pass (`pass-cli`) | Binary **`~/.local/bin/pass-cli`** v1.9.0 (manual install 2026-04-05); **`pass-cli login`** still for Ed. |
 | Remote access | SSH + RDP (xrdp + Cinnamon) | See [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md). |
 | GPU | NVIDIA 470 / Kepler | Driver notes in workstation doc. |
 
@@ -36,7 +36,7 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 | `~/clawd` | **Present** (`SECURITY.md`, **`TOOLS.md`**, **`SCHEDULING.md`**, **`memory/`**, etc.). |
 | `~/.openclaw` | **Present** after **`openclaw onboard`**; **`openclaw.json`** updated; sessions under **`~/.openclaw/agents/main/sessions`**. |
 | `openclaw` | **OpenClaw 2026.4.2** (`d74a122`) under nvm’s global bin after **`nvm.sh`** is sourced; **`command openclaw --version`** OK in that environment. Interactive SSH without loading nvm still shows **`npm`/`openclaw` not found** until **`~/.bashrc`** loads nvm (see changelog). |
-| `pass-cli` | **Not on `PATH`** yet |
+| `pass-cli` | **`~/.local/bin/pass-cli`** v1.9.0; on **`PATH`** in login shell for **`ed`** |
 | `gcalcli` | **`/usr/bin/gcalcli`** present |
 
 **Optional:** `sudo apt install curl` so future nvm/docs that assume `curl` match this box.
@@ -52,9 +52,10 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 - [x] Anthropic `auth-profiles.json` correct shape (`version` + `profiles.anthropic:default`); **`chmod 600`**.
 - [x] `chmod 700` **`~/.openclaw`**, subdirs, **`~/.openclaw/credentials`**; JSON config files **`chmod 600`** where applicable.
 - [x] **`~/.openclaw/exec-approvals.json`** — defaults **`allowlist`**, **`ask: on-miss`**, **`askFallback: deny`**, **`autoAllowSkills: false`**; agent **`main`** allowlist: **`/bin/ls`**, **`/usr/bin/find`**, **`/usr/bin/file`**, **`/usr/bin/gcalcli`**. **`openclaw.json`** → **`tools.exec`**: **`host: gateway`**, **`security: allowlist`**, **`ask: on-miss`**.
-- [ ] **`pass-cli`** on allowlist after install (**`openclaw approvals allowlist add --agent main "$HOME/.local/bin/pass-cli"`** when binary exists).
+- [x] **`pass-cli`** on exec allowlist (**`openclaw approvals allowlist add --agent main "$(command -v pass-cli)"`** → pattern **`~/.local/bin/pass-cli`**).
 - [x] **`openclaw security audit`**: **0 critical** · **2 warn** · **1 info** (see changelog — not “clean,” but no permission WARNs).
-- [ ] Gateway + dashboard/chat smoke test (human: **`openclaw gateway`** then **`openclaw dashboard`**).
+- [x] **Gateway process + health (automated 2026-04-05):** **`ss`** shows **`127.0.0.1:18789`** **`openclaw-gatewa`**; **`openclaw health`** OK.
+- [ ] **Control UI / pairing / dashboard chat** — CLI **`openclaw agent --agent main`** returned **pairing required** on WebSocket, then **embedded fallback** succeeded (`pong` test). Ed should run **`openclaw dashboard`** / **`openclaw tui`** and finish pairing for gateway-backed UI chat.
 - [x] **`~/.openclaw/emergency_shutdown.sh`** — **`chmod 700`**, stops **`openclaw`**, strips **`check_email`** crontab lines if present, appends **`activity.log`**.
 
 ---
@@ -70,6 +71,15 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 ---
 
 ## Changelog / steps log
+
+### 2026-04-05 (TEMP_REMOTE_CLIPBOARD_HANDOFF — automated pass-cli + smoke notes)
+
+- **`pass-cli`:** Installed **Proton Pass CLI 1.9.0** to **`/home/ed/.local/bin/pass-cli`** via **`wget`** + **`sha256sum`** against **`https://proton.me/download/pass-cli/versions.json`** (official **`install.sh`** refused: **`curl`** not installed; **`sudo apt install curl`** unavailable without interactive sudo).
+- **Exec allowlist:** **`openclaw approvals allowlist add --agent main "$(command -v pass-cli)"`** — local **`exec-approvals.json`** updated.
+- **`~/clawd/TOOLS.md`:** Ubuntu / manual install note added (not in git).
+- **Gateway checks:** **`openclaw doctor`**, **`openclaw health`**, **`openclaw security audit --deep`** (summary unchanged: **0 critical · 2 warn · 1 info**). **`openclaw agent --agent main -m "…"`** → gateway **pairing required**, embedded path returned model text **`pong`**.
+- **Seller:** **`/home/ed/Transfer/items/`** still only **`LAYOUT.txt`** — no **`<slug>`** folders with photos yet.
+- **Repo:** **`TEMP_REMOTE_CLIPBOARD_HANDOFF.txt`** removed; **`ubuntu_status.md`**, **`LLM_RESUME_CHECKPOINT.md`**, **`PROTON_PASS_SETUP.md`** updated.
 
 ### 2026-04-05 (LLM handoff doc)
 
@@ -121,4 +131,4 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 ---
 
-*Next update: after **gateway + dashboard smoke test** and/or **`pass-cli`** allowlist — paste command outputs into the changelog (redact secrets). See **[LLM_RESUME_CHECKPOINT.md](LLM_RESUME_CHECKPOINT.md)**.*
+*Next update: after Ed runs **`pass-cli login`** and **dashboard/tui pairing** — paste command outputs into the changelog (redact secrets). See **[LLM_RESUME_CHECKPOINT.md](LLM_RESUME_CHECKPOINT.md)**.*

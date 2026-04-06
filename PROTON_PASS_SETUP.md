@@ -6,6 +6,12 @@
 
 ---
 
+## Linux install without `curl`
+
+The official **`install.sh`** requires **`curl`**. If **`curl`** is not installed (common on minimal Ubuntu) and you prefer not to use **`sudo apt install curl`** yet, download the Linux binary URL from **`https://proton.me/download/pass-cli/versions.json`** (see **`passCliVersions.urls.linux`** for **`x86_64`** or **`aarch64`**), verify the published **`hash`** with **`sha256sum`**, move it to **`~/.local/bin/pass-cli`**, and **`chmod +x`**. Then add **`openclaw approvals allowlist add --agent main "$(command -v pass-cli)"`** if you use exec allowlists.
+
+---
+
 ## Step 1: Login to Proton Pass
 
 Run this in your terminal:
