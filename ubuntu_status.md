@@ -61,6 +61,7 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 ## Seller agent (Transfer → listings)
 
+- [x] **First item folder with drafts (2026-04-05):** **`/home/ed/Transfer/items/ipad/`** — one product photo; **`listing.md`**, **`facebook.txt`**, **`craigslist.txt`**, **`ebay.txt`**, **`offerup.txt`** added (model/storage still **TBD** in copy; Ed confirms before posting).
 - [x] **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`** — copied from **`~/Developer/myOpenClaw/SELLER_AGENT_LLM_GUIDE.md`**.
 - [x] **`~/clawd/TOOLS.md`** — new **Seller listings** + **gcalcli** Ubuntu allowlist example.
 - [x] **`~/clawd/AGENTS.md`** — session hook: read seller guide when Ed mentions Transfer / marketplaces.

@@ -63,14 +63,14 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 
 **Open / still to do:**
 
-- [ ] **Seller first listing** — No per-**`<slug>`** photo folders yet under **`Transfer/items/`** (only **`LAYOUT.txt`**); add photos then run seller workflow.
+- [ ] **Seller publish** — Drafts exist under **`Transfer/items/ipad/`**; Ed adds **model/storage/condition**, sets **price** from comps, then pastes into marketplaces (**not posted** by automation).
 - [ ] **Optional:** **`tools.exec.strictInlineEval=true`** (addresses **`find`** allowlist WARN in audit).
 
 ---
 
 ## Next tasks (numbered — do in order; update **ubuntu_status.md** when done)
 
-1. **Seller agent first run** — Add photos under **`/home/ed/Transfer/items/<slug>/`**, then follow **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`**. Approve **exec** prompts for tools not yet on the allowlist.
+1. **Seller listings** — Per-item folders under **`/home/ed/Transfer/items/<slug>/`**; playbook **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`**. **Done for `ipad/`** (draft files); next: **confirm device details**, **comps/pricing**, **paste & publish** yourself.
 
 2. **Optional hardening** — Consider **`tools.exec.strictInlineEval=true`** for the **`find`** allowlist interpreter note (see **ubuntu_status** changelog).
 
@@ -96,4 +96,4 @@ command -v pass-cli >/dev/null && echo pass_cli:ok || echo pass_cli:missing
 
 ---
 
-*Last checkpoint update: 2026-04-05 (**pass-cli** authenticated; next: **seller photos** under **`Transfer/items/`**) — align with **ubuntu_status.md** if dates or checkboxes diverge.*
+*Last checkpoint update: 2026-04-05 (**seller** drafts in **`Transfer/items/ipad/`**; next: **Ed publish** + optional **`strictInlineEval`**) — align with **ubuntu_status.md** if dates or checkboxes diverge.*
