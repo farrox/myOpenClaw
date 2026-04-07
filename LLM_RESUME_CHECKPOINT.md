@@ -70,7 +70,7 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 
 ## Next tasks (numbered — do in order; update **ubuntu_status.md** when done)
 
-1. **Seller listings** — Per-item folders under **`/home/ed/Transfer/items/<slug>/`**; playbook **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`**. **Done for `ipad/`** (draft files); next: **confirm device details**, **comps/pricing**, **paste & publish** yourself.
+1. **Seller listings (batch)** — Follow **`SELLER_AGENT_LLM_GUIDE.md` §10** (step-by-step: folder → photos → optional **`notes.txt`** → OpenClaw prompt → review → publish). Keep **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`** in sync with the repo copy when you update the guide.
 
 2. **Optional hardening** — Consider **`tools.exec.strictInlineEval=true`** for the **`find`** allowlist interpreter note (see **ubuntu_status** changelog).
 

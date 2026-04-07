@@ -122,7 +122,74 @@ Reply with: what you **can** do now (files updated, text ready), what **requires
 
 ---
 
-## 10. Related docs in this repo
+## 10. Batch seller workflow (step by step — many items)
+
+**Goal:** Same rules as §4–§5, but **repeatable** so each new item costs Ed less time: **prepare folders → batch draft → batch publish**.
+
+### Step 1 — Create one folder per item
+
+- Path: **`/home/ed/Transfer/items/<slug>/`** (see §3).
+- **Slug pattern:** `category-short-description-YYYY-MM` (example: `electronics-ipad-keyboard-pencil-2026-04`). Stable slugs make it easy to find the folder later.
+
+### Step 2 — Add photos before drafting
+
+- Put **all** useful images in the folder first (front/back, defects, accessories, scale if helpful).
+- Fewer drafts **before** photos are complete → fewer revisions.
+
+### Step 3 — Optional `notes.txt` (high leverage)
+
+If Ed spends **one minute** here, drafts get better and pricing gaps shrink. Suggested lines (omit unknowns):
+
+```text
+# notes.txt — facts for listing (not public verbatim unless you want)
+brand_model:
+storage_size:
+condition:  # e.g. "good / fair / for parts"
+included:   # charger, box, case
+defects:
+price_floor:  # optional; "firm" or "OBO"
+shipping:     # local only / will ship
+comps:        # optional: "sold eBay ~$X" or links
+```
+
+The assistant reads **`notes.txt`** with the images and folds facts into **`listing.md`** and platform files.
+
+### Step 4 — Request drafts in OpenClaw (one session, many folders)
+
+Ed runs the gateway + dashboard (or TUI), then either:
+
+- **Per folder:** paste the **reusable prompt** below and replace **`<slug>`**; or  
+- **Queue:** “Process every subfolder under **`/home/ed/Transfer/items/`** that has images but no **`listing.md`** yet” (assistant lists dirs, then works in order).
+
+**Reusable prompt (copy/paste):**
+
+```text
+Read ~/clawd/SELLER_AGENT_LLM_GUIDE.md. For /home/ed/Transfer/items/<slug>/:
+inventory images and notes.txt if present; write or update listing.md (sections per the guide)
+plus facebook.txt, craigslist.txt, ebay.txt, offerup.txt as paste-ready drafts.
+Use price from notes/comps if given; otherwise give a labeled estimate range with assumptions.
+End with: not posted — I must publish. List any missing facts in one short bullet list.
+```
+
+### Step 5 — Ed reviews drafts (fast pass)
+
+- Skim **`listing.md`** for honesty and tone.  
+- Set **real** price using **sold comps** (marketplaces or web) — the assistant’s range is a starting point unless **`notes.txt`** already anchored it.  
+- Fix platform files if a title needs a exact model name.
+
+### Step 6 — Publish in a separate sitting (optional but efficient)
+
+- **Draft day** and **click-to-post day** can be different: batching reduces context switching.  
+- Still: **Ed publishes**; the assistant does **not** claim listings are live (§5.1).
+
+### Step 7 — Optional queue hygiene
+
+- Process folders **FIFO** (oldest first) or **alphabetically** — pick one rule and stick to it.  
+- Optional: add **`published.txt`** in the folder with a date + channels once posted, so Ed does not re-draft the same item.
+
+---
+
+## 11. Related docs in this repo
 
 | File | Use |
 |------|-----|
@@ -134,4 +201,4 @@ Reply with: what you **can** do now (files updated, text ready), what **requires
 
 ---
 
-*Last updated: April 5, 2026 — align with Ed’s actual `Transfer` layout, **LLM_RESUME_CHECKPOINT.md**, and any future eBay API integration.*
+*Last updated: April 5, 2026 — includes §10 batch workflow; align with Ed’s actual `Transfer` layout, **LLM_RESUME_CHECKPOINT.md**, and copy under **`~/clawd/`** on `mypc`.*
