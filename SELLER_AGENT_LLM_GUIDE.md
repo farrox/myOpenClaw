@@ -52,7 +52,7 @@ Treat **each immediate subfolder** of **`/home/ed/Transfer`** (or **`/home/ed/Tr
 ## 4. Workflow per folder
 
 1. **Inventory:** List image files; open/read every image you are allowed to process (vision).
-2. **Extract:** Identify object type, style/era (if visible), condition signals, included accessories, obvious defects.
+2. **Extract:** Identify object type, style/era (if visible), condition signals, included accessories, obvious defects — use §6.1 for **how** to identify products (vision vs Lens vs optional APIs).
 3. **Gaps:** If pricing or copy would be irresponsible without facts, **ask Ed** (size, brand/model, works vs parts, pickup vs ship, minimum price).
 4. **Pricing:**
    - If Ed provides **comps** (links or “sold around $X”), anchor your range to that.
@@ -92,6 +92,24 @@ Reply with: what you **can** do now (files updated, text ready), what **requires
 - Use **image-capable** reasoning when the gateway/model supports images for those files.
 - **Redact or avoid** describing **personal data** visible in photos (mailing labels, license plates, family faces) in public-facing copy; suggest cropping if relevant.
 - If an image is unreadable, say so and ask for a retake.
+
+### 6.1 Identifying the product (Google Lens, “Goggles”, and alternatives)
+
+**Reality check:** There is **no stable, official, free HTTP API** that reproduces **Google Lens** or classic **Google Goggles** for arbitrary third-party apps. Anything that “scrapes” Google image search or Lens-like UIs is **fragile** and often **violates terms of use**. Prefer the options below.
+
+**Tier A — Use the assistant’s vision first (default)**  
+The same **multimodal** model that reads listing photos can usually name the **category**, **brand cues**, **era** (e.g. connector types), and **accessories** in frame. Treat that as a **hypothesis**, not a guaranteed SKU — especially for electronics without a readable model number on the casing.
+
+**Tier B — Human + Google Lens (free, reliable for many items)**  
+On a **phone**, use **Google Lens** (or **Google app** search-by-image) on the physical item or on a photo of the screen showing **Settings → About**. Copy the **best-matching product name**, **MPN**, or **retail listing title** into **`notes.txt`** (e.g. `lens_or_search_hint: iPad Pro 11-inch (3rd generation)`). The assistant then **merges** Lens-backed text with folder images in **`listing.md`**.
+
+**Tier C — Barcode / serial visible in photos**  
+If a **UPC/EAN** or **serial** is legible, ask Ed to type it into **`notes.txt`**. The assistant can suggest **where** to verify (retailer or manufacturer support pages); do **not** invent specs from a partial barcode.
+
+**Tier D — Optional paid / free-tier cloud APIs (Ed supplies keys; never in git)**  
+If Ed enables them in the environment (see **`~/clawd/TOOLS.md`**), small scripts can call e.g. **Google Cloud Vision** (label / web-detection style features) or other vendors’ **visual search** APIs. These are **billing or quota-bound**, not “unlimited free Lens.” Add any CLI to the OpenClaw **exec allowlist** only after path review.
+
+**Workflow summary for Ed (efficient):** Photo folder → **optional** 30s Lens pass → paste one line into **`notes.txt`** → assistant drafts with **both** vision and that hint → Ed confirms model before posting.
 
 ---
 
@@ -142,6 +160,7 @@ If Ed spends **one minute** here, drafts get better and pricing gaps shrink. Sug
 
 ```text
 # notes.txt — facts for listing (not public verbatim unless you want)
+lens_or_search_hint:  # optional: paste Google Lens / retail title / MPN (see §6.1)
 brand_model:
 storage_size:
 condition:  # e.g. "good / fair / for parts"
@@ -201,4 +220,4 @@ End with: not posted — I must publish. List any missing facts in one short bul
 
 ---
 
-*Last updated: April 5, 2026 — includes §10 batch workflow; align with Ed’s actual `Transfer` layout, **LLM_RESUME_CHECKPOINT.md**, and copy under **`~/clawd/`** on `mypc`.*
+*Last updated: April 5, 2026 — includes §6.1 product ID (Lens / vision / APIs) and §10 batch workflow; sync copy to **`~/clawd/`** on `mypc`.*
