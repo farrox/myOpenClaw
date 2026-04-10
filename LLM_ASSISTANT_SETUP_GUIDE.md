@@ -261,6 +261,7 @@ If `pass-cli` lives in `~/.local/bin`, ensure that directory is on `PATH` for **
 | `PROTON_PASS_SETUP.md` / `QUICK_START_PROTON.md` | Proton Pass CLI |
 | `SUCCESS.md` / `HOW_TO_USE.md` | Operator quick reference (customize paths/emails per person) |
 | `SELLER_AGENT_LLM_GUIDE.md` | Seller agent: `Transfer` folders, multi-platform listing **drafts**, human publishes. |
+| `UBUNTU_AGENT_HOUSEHOLD_GUIDE.md` | Ubuntu agent: one admin (`ed`), **multi-agent** household via **`openclaw agents`**. |
 | `TROUBLESHOOTING.md` | Gateway / CLI issues |
 
 ---

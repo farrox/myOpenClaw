@@ -25,7 +25,7 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 1. **This file** (`LLM_RESUME_CHECKPOINT.md`) — resume point, paths, done/open, numbered tasks, verify commands.
 2. **[ubuntu_status.md](ubuntu_status.md)** — detailed verified state, checklists, changelog (**update when you finish steps**).
 3. **[UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md)** — shells, nvm, SSH/RDP, GPU, GitHub SSH.
-4. **Task-specific:** [SELLER_AGENT_LLM_GUIDE.md](SELLER_AGENT_LLM_GUIDE.md) (listings), [HOW_TO_USE.md](HOW_TO_USE.md) / [SUCCESS.md](SUCCESS.md) (day‑2), [PROTON_PASS_SETUP.md](PROTON_PASS_SETUP.md) when wiring `pass-cli`.
+4. **Task-specific:** [UBUNTU_AGENT_HOUSEHOLD_GUIDE.md](UBUNTU_AGENT_HOUSEHOLD_GUIDE.md) (household multi-agent on one admin account), [SELLER_AGENT_LLM_GUIDE.md](SELLER_AGENT_LLM_GUIDE.md) (listings), [HOW_TO_USE.md](HOW_TO_USE.md) / [SUCCESS.md](SUCCESS.md) (day‑2), [PROTON_PASS_SETUP.md](PROTON_PASS_SETUP.md) when wiring `pass-cli`.
 
 **Fresh install on another machine?** Start from [LLM_ASSISTANT_SETUP_GUIDE.md](LLM_ASSISTANT_SETUP_GUIDE.md) from the top, not this checkpoint.
 

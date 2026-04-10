@@ -4,7 +4,7 @@
 
 Living log of **what we verified**, **what we assumed**, and **steps taken** for OpenClaw on this household Ubuntu workstation. Update this file as install/config progresses; commit and push with meaningful messages.
 
-**Canonical context:** [LLM_ASSISTANT_SETUP_GUIDE.md](LLM_ASSISTANT_SETUP_GUIDE.md) + [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md). Day‑2 ops: [HOW_TO_USE.md](HOW_TO_USE.md), [SUCCESS.md](SUCCESS.md). Proton: [PROTON_PASS_SETUP.md](PROTON_PASS_SETUP.md), [QUICK_START_PROTON.md](QUICK_START_PROTON.md).
+**Canonical context:** [LLM_ASSISTANT_SETUP_GUIDE.md](LLM_ASSISTANT_SETUP_GUIDE.md) + [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md). Household agent model: [UBUNTU_AGENT_HOUSEHOLD_GUIDE.md](UBUNTU_AGENT_HOUSEHOLD_GUIDE.md). Day‑2 ops: [HOW_TO_USE.md](HOW_TO_USE.md), [SUCCESS.md](SUCCESS.md). Proton: [PROTON_PASS_SETUP.md](PROTON_PASS_SETUP.md), [QUICK_START_PROTON.md](QUICK_START_PROTON.md).
 
 ---
 
