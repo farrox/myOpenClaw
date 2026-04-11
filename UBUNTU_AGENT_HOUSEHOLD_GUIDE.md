@@ -34,7 +34,7 @@ Official CLI docs: [agents](https://docs.openclaw.ai/cli/agents).
 **Intent:**
 
 - **Agent A (e.g. `main`):** Ed’s workspace (e.g. **`/home/ed/clawd`**), his `auth-profiles`, his channels.
-- **Agent B (e.g. a second id):** Spouse’s workspace (e.g. **`/home/ed/clawd-tina`** or a path Ed chooses), **her** `auth-profiles` and API billing where applicable, **her** messaging channels.
+- **Agent B (e.g. a second id):** Other household member’s workspace (e.g. **`/home/ed/clawd-partner`** or a path Ed chooses), **their** `auth-profiles` and API billing where applicable, **their** messaging channels.
 
 **Do not** merge two people’s private email, calendars, or vault material into one workspace unless Ed explicitly asks. **Do not** reuse one Anthropic profile for two humans if they need separate budgets or privacy—Ed should use separate keys or profiles per agent as he prefers.
 

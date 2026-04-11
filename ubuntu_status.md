@@ -72,13 +72,16 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 ## Changelog / steps log
 
-### 2026-04-10 (OpenClaw agent `tina`)
+### 2026-04-11 (agents rename: Ori→Assistant, `tina`→`partner`)
 
-- **`openclaw agents add tina --non-interactive --workspace /home/ed/clawd-tina`**: second isolated agent; **`openclaw.json`** updated (backup **`.bak`**).
-- **Workspace `~/clawd-tina`:** **`SECURITY.md`** (copy from **`~/clawd`**), stub **`TOOLS.md`**, **`IDENTITY.md`**, **`memory/`**; **`openclaw agents set-identity --agent tina`** → display **Tina** / ✨.
-- **Exec allowlist:** **`tina`** — **`ls`**, **`find`**, **`file`**, **`gcalcli`**, **`pass-cli`** (same pattern as **`main`**).
-- **Auth:** **`~/.openclaw/agents/tina/agent/auth-profiles.json`** initially copied from **`main`** (shared Anthropic profile); replace with a **separate** profile/key if Tina should have her own billing or privacy boundary.
-- **Next:** customize **`TOOLS.md`**, optional **`agents bind`** for channel routing, **restart gateway**.
+- **`main`:** **`~/clawd/IDENTITY.md`** and **`openclaw agents set-identity --agent main`** → display **Assistant** / 🦞 (theme: Ed assistant on `mypc`).
+- **Removed `tina`:** **`openclaw agents delete tina --force`**; workspace renamed **`~/clawd-tina` → `~/clawd-partner`**; orphan **`~/.openclaw/agents/tina`** removed; **`exec-approvals.json`** **`tina`** stanza deleted (**`jq del(.agents.tina)`**).
+- **Added `partner`:** **`openclaw agents add partner --non-interactive --workspace /home/ed/clawd-partner`**; **`auth-profiles.json`** from **`main`**; allowlist same as **`main`**; identity **Partner assistant** / ✨.
+- **Next:** **restart gateway**; customize **`~/clawd-partner/TOOLS.md`**; **`openclaw agents bind`** if routing by channel.
+
+### 2026-04-10 (OpenClaw second agent — superseded 2026-04-11)
+
+- Originally added as **`tina`** / **`~/clawd-tina`**; see **2026-04-11** for current **`partner`** / **`~/clawd-partner`** layout.
 
 ### 2026-04-06 (household guide integration)
 
