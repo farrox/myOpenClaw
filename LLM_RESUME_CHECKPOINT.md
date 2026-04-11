@@ -60,11 +60,12 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 - [x] **`curl`** (apt) — **`/usr/bin/curl`** **8.5.0**; official Proton **`install.sh`** and other **`curl`**-based scripts work.
 - [x] **Gateway + Control UI** — **`openclaw gateway run`** + **`openclaw dashboard`** verified (2026-04-05); webchat + RPCs OK. **Never** share dashboard URLs (**`#token=`**); treat as a secret.
 - [x] **`pass-cli`** — Authenticated (**`pass-cli login`** reports *Already authenticated* **2026-04-05**).
+- [x] **Household agent `tina`** — Workspace **`~/clawd-tina`** (`SECURITY.md`, **`TOOLS.md`** stub, **`IDENTITY.md`**); identity **Tina** / ✨; exec allowlist mirrors **`main`** (`ls`, `find`, `file`, `gcalcli`, `pass-cli`); **`auth-profiles.json`** copied from **`main`** (same Anthropic usage until Ed gives **`tina`** her own key).
 
 **Open / still to do:**
 
 - [ ] **Seller publish** — Drafts exist under **`Transfer/items/ipad/`**; Ed adds **model/storage/condition**, sets **price** from comps, then pastes into marketplaces (**not posted** by automation).
-- [ ] **Optional — second household agent** — When a second person needs their own assistant on the same box: follow **[UBUNTU_AGENT_HOUSEHOLD_GUIDE.md](UBUNTU_AGENT_HOUSEHOLD_GUIDE.md)** (`openclaw agents add`, separate workspace + auth + allowlists; one gateway or distinct ports).
+- [ ] **Tina workspace + routing** — Customize **`~/clawd-tina/TOOLS.md`**; add **`openclaw agents bind`** rules if channels should route to **`tina`** vs **`main`**; **restart gateway** after config changes.
 - [ ] **Optional:** **`tools.exec.strictInlineEval=true`** (addresses **`find`** allowlist WARN in audit).
 
 ---
@@ -73,7 +74,7 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 
 1. **Seller listings (batch)** — Follow **`SELLER_AGENT_LLM_GUIDE.md` §10** (step-by-step: folder → photos → optional **`notes.txt`** → OpenClaw prompt → review → publish). Keep **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`** in sync with the repo copy when you update the guide.
 
-2. **Household multi-agent (optional)** — If adding a spouse’s agent: **[UBUNTU_AGENT_HOUSEHOLD_GUIDE.md](UBUNTU_AGENT_HOUSEHOLD_GUIDE.md)**; run **`openclaw agents list`** before/after; restart gateway if config changes.
+2. **Tina’s assistant** — Finish **`~/clawd-tina/TOOLS.md`**; **`openclaw agents bindings`** / **`bind`** if needed; replace **`tina`** **`auth-profiles.json`** with her own key if you want separate billing (see **[UBUNTU_AGENT_HOUSEHOLD_GUIDE.md](UBUNTU_AGENT_HOUSEHOLD_GUIDE.md)**).
 
 3. **Optional hardening** — Consider **`tools.exec.strictInlineEval=true`** for the **`find`** allowlist interpreter note (see **ubuntu_status** changelog).
 
@@ -100,4 +101,4 @@ command -v pass-cli >/dev/null && echo pass_cli:ok || echo pass_cli:missing
 
 ---
 
-*Last checkpoint update: 2026-04-06 (household guide cross-links + optional second agent task) — align with **ubuntu_status.md** if dates or checkboxes diverge.*
+*Last checkpoint update: 2026-04-10 — agent **`tina`** added; align with **ubuntu_status.md** if dates or checkboxes diverge.*

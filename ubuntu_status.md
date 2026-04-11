@@ -72,6 +72,14 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 ## Changelog / steps log
 
+### 2026-04-10 (OpenClaw agent `tina`)
+
+- **`openclaw agents add tina --non-interactive --workspace /home/ed/clawd-tina`**: second isolated agent; **`openclaw.json`** updated (backup **`.bak`**).
+- **Workspace `~/clawd-tina`:** **`SECURITY.md`** (copy from **`~/clawd`**), stub **`TOOLS.md`**, **`IDENTITY.md`**, **`memory/`**; **`openclaw agents set-identity --agent tina`** → display **Tina** / ✨.
+- **Exec allowlist:** **`tina`** — **`ls`**, **`find`**, **`file`**, **`gcalcli`**, **`pass-cli`** (same pattern as **`main`**).
+- **Auth:** **`~/.openclaw/agents/tina/agent/auth-profiles.json`** initially copied from **`main`** (shared Anthropic profile); replace with a **separate** profile/key if Tina should have her own billing or privacy boundary.
+- **Next:** customize **`TOOLS.md`**, optional **`agents bind`** for channel routing, **restart gateway**.
+
 ### 2026-04-06 (household guide integration)
 
 - **[UBUNTU_AGENT_HOUSEHOLD_GUIDE.md](UBUNTU_AGENT_HOUSEHOLD_GUIDE.md)** linked from **README** repo tree, **UBUNTU_WORKSTATION_NOTES**, **SELLER_AGENT_LLM_GUIDE** §11, **LLM_RESUME_CHECKPOINT** (optional second agent + **`openclaw agents list`** verify). Copy synced to **`~/clawd/UBUNTU_AGENT_HOUSEHOLD_GUIDE.md`**.
