@@ -104,6 +104,7 @@ myOpenClaw/
 ├── SETUP_GUIDE.md                     # Step-by-step setup (+ April 2026 addendum)
 ├── UBUNTU_WORKSTATION_NOTES.md        # mypc Linux / RDP / GPU / SSH
 ├── ubuntu_status.md                   # Living install log (mypc)
+├── UBUNTU_AGENT_HOUSEHOLD_GUIDE.md    # One admin, multi-agent household (OpenClaw)
 ├── SELLER_AGENT_LLM_GUIDE.md          # Transfer → listing drafts
 ├── PROTON_PASS_SETUP.md               # Proton Pass CLI
 ├── HOW_TO_USE.md / SUCCESS.md         # Operator notes (customize per machine)

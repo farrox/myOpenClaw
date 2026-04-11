@@ -20,6 +20,8 @@ These are **expected to be missing** until setup is finished:
 
 **Proton Pass CLI (`pass-cli`):** install and login per **`PROTON_PASS_SETUP.md`** and **`QUICK_START_PROTON.md`** in this repo. The binary often ends up under **`~/.local/bin/pass-cli`**; **`which pass-cli`** must succeed in the **same** environment that runs the gateway (terminal, systemd user unit, or login session).
 
+**Household, two people, one Linux admin:** use separate OpenClaw **agent** workspaces (not necessarily separate Unix accounts). See **`UBUNTU_AGENT_HOUSEHOLD_GUIDE.md`** in this repo — **`openclaw agents list`**, **`openclaw agents add`**, per-agent allowlists.
+
 ---
 
 ## Shell and `PATH` (non-interactive vs login)

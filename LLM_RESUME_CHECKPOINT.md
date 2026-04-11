@@ -64,6 +64,7 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 **Open / still to do:**
 
 - [ ] **Seller publish** — Drafts exist under **`Transfer/items/ipad/`**; Ed adds **model/storage/condition**, sets **price** from comps, then pastes into marketplaces (**not posted** by automation).
+- [ ] **Optional — second household agent** — When a second person needs their own assistant on the same box: follow **[UBUNTU_AGENT_HOUSEHOLD_GUIDE.md](UBUNTU_AGENT_HOUSEHOLD_GUIDE.md)** (`openclaw agents add`, separate workspace + auth + allowlists; one gateway or distinct ports).
 - [ ] **Optional:** **`tools.exec.strictInlineEval=true`** (addresses **`find`** allowlist WARN in audit).
 
 ---
@@ -72,9 +73,11 @@ Only **`~/Developer/myOpenClaw`** is the git repo unless Ed adds another clone p
 
 1. **Seller listings (batch)** — Follow **`SELLER_AGENT_LLM_GUIDE.md` §10** (step-by-step: folder → photos → optional **`notes.txt`** → OpenClaw prompt → review → publish). Keep **`~/clawd/SELLER_AGENT_LLM_GUIDE.md`** in sync with the repo copy when you update the guide.
 
-2. **Optional hardening** — Consider **`tools.exec.strictInlineEval=true`** for the **`find`** allowlist interpreter note (see **ubuntu_status** changelog).
+2. **Household multi-agent (optional)** — If adding a spouse’s agent: **[UBUNTU_AGENT_HOUSEHOLD_GUIDE.md](UBUNTU_AGENT_HOUSEHOLD_GUIDE.md)**; run **`openclaw agents list`** before/after; restart gateway if config changes.
 
-3. **Repo hygiene** — After changes, **`git commit` + `git push`** from **`~/Developer/myOpenClaw`** (no secrets).
+3. **Optional hardening** — Consider **`tools.exec.strictInlineEval=true`** for the **`find`** allowlist interpreter note (see **ubuntu_status** changelog).
+
+4. **Repo hygiene** — After changes, **`git commit` + `git push`** from **`~/Developer/myOpenClaw`** (no secrets).
 
 ---
 
@@ -86,6 +89,7 @@ Use **`-l`** so **`~/.profile`** loads nvm (see **UBUNTU_WORKSTATION_NOTES.md**)
 bash -l -c 'command -v openclaw && openclaw --version'
 bash -l -c 'command -v node && node -v && command -v npm && npm -v'
 bash -l -c 'openclaw approvals get | head -40'
+bash -l -c 'openclaw agents list'
 bash -l -c 'openclaw security audit'
 command -v curl >/dev/null && curl --version | head -1
 test -f ~/clawd/SELLER_AGENT_LLM_GUIDE.md && echo seller_guide:ok
@@ -96,4 +100,4 @@ command -v pass-cli >/dev/null && echo pass_cli:ok || echo pass_cli:missing
 
 ---
 
-*Last checkpoint update: 2026-04-05 (**seller** drafts in **`Transfer/items/ipad/`**; next: **Ed publish** + optional **`strictInlineEval`**) — align with **ubuntu_status.md** if dates or checkboxes diverge.*
+*Last checkpoint update: 2026-04-06 (household guide cross-links + optional second agent task) — align with **ubuntu_status.md** if dates or checkboxes diverge.*

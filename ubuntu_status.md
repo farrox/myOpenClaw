@@ -72,6 +72,10 @@ Living log of **what we verified**, **what we assumed**, and **steps taken** for
 
 ## Changelog / steps log
 
+### 2026-04-06 (household guide integration)
+
+- **[UBUNTU_AGENT_HOUSEHOLD_GUIDE.md](UBUNTU_AGENT_HOUSEHOLD_GUIDE.md)** linked from **README** repo tree, **UBUNTU_WORKSTATION_NOTES**, **SELLER_AGENT_LLM_GUIDE** §11, **LLM_RESUME_CHECKPOINT** (optional second agent + **`openclaw agents list`** verify). Copy synced to **`~/clawd/UBUNTU_AGENT_HOUSEHOLD_GUIDE.md`**.
+
 ### 2026-04-05 (`pass-cli` session)
 
 - **`pass-cli login`:** CLI reports **Already authenticated** — existing Proton session on this machine (no new login needed unless **`pass-cli logout`** is used).

@@ -217,6 +217,7 @@ End with: not posted — I must publish. List any missing facts in one short bul
 | [SUCCESS.md](SUCCESS.md) | Exec allowlists, `openclaw.json` patterns. |
 | [HOW_TO_USE.md](HOW_TO_USE.md) | Day‑2 operator usage. |
 | [UBUNTU_WORKSTATION_NOTES.md](UBUNTU_WORKSTATION_NOTES.md) | `mypc` Linux paths, shells, SSH. |
+| [UBUNTU_AGENT_HOUSEHOLD_GUIDE.md](UBUNTU_AGENT_HOUSEHOLD_GUIDE.md) | One Ubuntu admin, **multi-agent** household; separate workspaces per person. |
 
 ---
 
